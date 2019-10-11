@@ -1467,6 +1467,10 @@ img.mfp-img {
 		height: 300px;
 	}
 }
+@media (max-width: 1600px){
+	.blog-heading .heading h1 {
+    font-size: 40px;
+}
 
 /* article */
 .article {
