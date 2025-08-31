@@ -954,9 +954,9 @@ Starting from extraction up to eliciting insights in order to make data-driven d
 
 
 
-		<!-- Begin section 5
+		<!-- Begin section 5 BLOG
 			===================== -->
-		<section id="section-5" class="blog no-padding" style="display:none;">
+		<section id="section-5" class="blog no-padding" >
 			<div class="container-fluid">
 				<div class="row">
 
@@ -1111,125 +1111,171 @@ Starting from extraction up to eliciting insights in order to make data-driven d
 
 
 
-		<!-- Begin section 6
+		<!-- Begin section 6 CONTACCT US
 			====================== -->
-		<section id="section-6" class="page contact-section bg-dark text-white bg-image"
-			style="background-image: url(img/World_map_blue_dots.png);">
+		<section class="contact-section padding-top-120 padding-bottom-120 bg-dark text-white bg-image" style="background-image: url(assets/img/map-bg.jpg);">
 
-			<!-- Element cover -->
-			<div class="cover"></div>
+					<!-- Element cover -->
+					<div class="cover cover-opacity-9"></div>
 
-			<div class="container">
-				<div class="row">
+					<div class="container">
+						<div class="row">
 
-					<div class="col-lg-12">
-						<div class="col-inner">
+							<div class="col-left col-lg-6">
+								<div class="col-inner">
 
-							<!-- Begin Heading -->
-							<div class="heading heading-xlg">
-								<h1>Contact <span class="bg-main text-white">US</span></h1>
+									<!-- Begin Heading 
+									=================== 
+									* Use class "heading-center" or "heading-right" to align heading.
+									* Use class "heading-xsm", "heading-sm", "heading-md", "heading-lg" or "heading-xlg" to set heading size.
+									-->
+									<div class="heading heading-xlg margin-bottom-50">
+										<h2 class="heading-title">Contact <span class="bg-main text-white">Us</span></h2>
+									</div>
+									<!-- End Heading -->
+									
+									<!-- Begin contact info -->
+									<!--
+									<div class="contact-info margin-bottom-50">
+										<p><span class="ci-icon"><i class="fas fa-home"></i></span> 121 King Street, Melbourne Victoria 3000 Australia</p>
+										<p><span class="ci-icon"><i class="fas fa-phone"></i></span> phone: +1 (954) 662-2972</p>
+										<p><span class="ci-icon"><i class="fas fa-envelope"></i></span> info@logicacode.com </p>
+									</div>
+									-->
+									<!-- End contact info -->
+									
+									<!-- Begin contact info -->
+									<div class="contact-info margin-bottom-50">
+										<p><b>Headquarters:</b>200 Tech Innovation Drive, Suite 300, Miami, FL 33101</p>
+										<p><b>Global Offices:</b> Cairo, Dubai</p>
+										<p><b>Contact:</b> info@logicacode.com | +1 (954) 662-2972</p>
+										<p><b>Hours:</b> Monday-Friday, 9:00 AM - 6:00 PM EST</p>
+									</div>	
+									</div>
+									<!-- End contact info -->
+									
+
+									<!-- Begin social icons -->
+									<div class="social-icons margin-bottom-50">
+										<!-- <h5>Follow Us:</h5> -->
+										<a href="https://www.facebook.com/logicacode.io" class="btn btn-social-min btn-light btn-rounded-5x btn-lg" target="_blank" title="Follow on Facebook">
+											<span class="btn-social-icon"><i class="fab fa-facebook"></i></span>
+										</a>
+										<a href="https://www.facebook.com/logicacode.io" class="btn btn-social-min btn-light btn-rounded-5x btn-lg" target="_blank" title="Follow on Twitter X">
+											<span class="btn-social-icon"><i class="fab fa-twitter"></i></span>
+										</a>
+										<a href="https://www.linkedin.com/company/ferrycode/" class="btn btn-social-min btn-light btn-rounded-5x btn-lg" target="_blank" title="Follow on Dribbble">
+											<span class="btn-social-icon"><i class="fab fa-linkedin"></i></span>
+										</a>
+										<a href="https://www.linkedin.com/company/ferrycode/" class="btn btn-social-min btn-light btn-rounded-5x btn-lg" target="_blank" title="Follow on Behance">
+											<span class="btn-social-icon"><i class="fab fa-github"></i></span>
+										</a>
+									</div>
+									<!-- End social icons -->
+
+								</div> <!-- /.col-inner -->
+							</div> <!-- /.col -->
+
+							<div class="col-right col-lg-6"> 
+								<div class="col-inner">
+
+									<!-- Begin contact form 
+									========================= -->
+									<form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+										<div class="contact-form-inner">
+
+											<!-- ///////////////////////////////////////////////////////////////////////
+											///// Begin hidden REQUIRED FIELDS (web3forms.com) /////
+											//////////////////////////////////////////////////////////////////////////// -->
+
+											<!-- Replace with your Access Key -->
+    										<input type="hidden" name="access_key" value="802dc056-51c0-47e5-af02-5b14c1582afb">
+											<!-- End hidden required fields -->
+
+											<div class="form-row">
+												<div class="col-xl-6">
+													<div class="form-group">
+														<input type="text" class="form-control form-control-lg" name="name" placeholder="Your Name" required="">
+													</div>
+												</div> <!-- /.col -->
+
+												<div class="col-xl-6">
+													<div class="form-group">
+														<input type="email" class="form-control form-control-lg" name="email" placeholder="Your Email" required="">
+													</div>
+												</div> <!-- /.col -->
+											</div> <!-- /.row -->
+
+											<div class="form-row">
+												<div class="col-lg-12">
+													<div class="form-group">
+														<input type="text" class="form-control form-control-lg" name="Subject" placeholder="Subject" required="">
+													</div>
+												</div> <!-- /.col -->
+											</div> <!-- /.row -->
+
+											<div class="form-row">
+												<div class="col-lg-12">
+													<div class="form-group">
+														<select class="form-control form-control-lg" name="Options" required="">
+															<option value="" disabled="" selected="">Select an option</option>
+															<option value="Say Hello">Free consultation offer</option>
+															<option value="New Project">New project</option>
+															<option value="Feedback">Feedback</option>
+															<option value="Other">Other</option>
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div class="form-row">
+												<div class="col-lg-12">
+													<div class="form-group">
+														<textarea class="form-control form-control-lg" rows="5" name="mssage" placeholder="Your Message" required=""></textarea>
+													</div>
+												</div> <!-- /.col -->
+											</div> <!-- /.row -->
+
+											<div class="small text-gray"><em>* All fields are required!</em></div>
+
+											<!-- Honeypot Spam Protection -->
+    										<input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+											<!-- Submit button -->
+											<button type="submit" class="btn btn-primary btn-rounded-5x btn-lg margin-top-30">Send Message</button>
+
+										</div> <!-- /.contact-form-inner -->
+									</form>
+									<!-- End contact form -->
+
+								</div> <!-- /.col-inner -->
+							</div> <!-- /.col -->
+
+						</div> <!-- /.row -->
+					</div> <!-- /.container -->
+				</section>
+		<!-- End section 6 CONTACT US -->
+
+
+		<!-- ===================
+			///// Begin footer /////
+			===================  -->
+			<footer id="footer" class="bg-dark text-white">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+
+							<!-- Begin copyright -->
+							<div class="copyright small">
+								logicacode llc © 
 							</div>
-							<!-- End Heading -->
+							<!-- End copyright -->
 
-						</div> <!-- /.col-inner -->
-					</div> <!-- /.col -->
-
-
-				</div> <!-- /.row -->
-				<div class="row">
-
-					<div class="col-left col-lg-3">
-						<div class="col-inner">
-							<!-- Begin contact info -->
-							<div class="contact-info">
-								<div class="info-box-heading">
-									<h3>Australia</h3>
-									<div class="divider"></div>
-								</div>
-								<p><i class="fas fa-home"></i> 121 King Street, Sydney, Australia</p>
-								<p><i class="fas fa-phone"></i> +123 456 789 00</p>
-								<p><i class="fas fa-envelope"></i> aus@logicacode.com</p>
-							</div>
-							<!-- End contact info -->
-
-						</div> <!-- /.col-inner -->
-					</div> <!-- /.col -->
-					<div class="col-left col-lg-3">
-						<div class="col-inner">
-							<!-- Begin contact info -->
-							<div class="contact-info">
-								<div class="info-box-heading">
-									<h3>UAE</h3>
-									<div class="divider"></div>
-								</div>
-								<p><i class="fas fa-home"></i> 121 Media Cirty, Dubai</p>
-								<p><i class="fas fa-phone"></i> +971 55 6 789 00</p>
-								<p><i class="fas fa-envelope"></i> dubai@logicacode.com</p>
-							</div>
-							<!-- End contact info -->
-
-						</div> <!-- /.col-inner -->
-					</div> <!-- /.col -->
-					<div class="col-lg-3">
-						<div class="col-inner">
-							<!-- Begin contact info -->
-							<div class="contact-info">
-								<div class="info-box-heading">
-									<h3>USA, Canada & Mexico</h3>
-									<div class="divider"></div>
-								</div>
-								<p><i class="fas fa-home yellow"></i> 4145 North Service Road West 2nd Floor, Burlington Ontario L7L 6A3, Canada</p>
-								<p><i class="fas fa-phone"></i> +1 647 222 8357</p>
-								<p><i class="fas fa-envelope"></i> america@logicacode.com</p>
-							</div>
-							<!-- End contact info -->
-
-						</div> <!-- /.col-inner -->
-					</div> <!-- /.col -->
-
-
-
-				</div> <!-- /.row -->
-			</div> <!-- /.container -->
-		</section>
-		<!-- End section 11 -->
-
-
-		<!-- Begin footer
-			================== -->
-		<footer id="footer" class="bg-dark text-white page contact-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6">
-
-						<!-- Begin copyright -->
-						<div class="copyright small">
-							Logicacode | Make It Happen | Digital Transformation's Experts.
-						</div>
-						<!-- End copyright -->
-
-					</div> <!-- /.col -->
-					<div class="col-right col-lg-6">
-						<div class="col-inner">
-
-							<!-- Begin social icons -->
-							<div class="social-icons">
-								<a href="https://web.facebook.com/" target="_blank"
-									title="Follow on Facebook"><i class="fab fa-facebook"></i></a>
-								<a href="https://twitter.com/" target="_blank" title="Follow on Twitter"><i
-										class="fab fa-twitter"></i></a>
-								<a href="https://www.linkedin.com/company/logicacode" target="_blank"
-									title="Follow on Linkedin"><i class="fab fa-linkedin-in"></i></a>
-
-							</div>
-							<!-- End social icons -->
-
-						</div> <!-- /.col-inner -->
-					</div> <!-- /.col -->
-				</div> <!-- /.row -->
-			</div> <!-- /.container -->
-		</footer>
-		<!-- End footer -->
+						</div> <!-- /.col -->
+					</div> <!-- /.row -->
+				</div> <!-- /.container -->
+			</footer>
+			<!-- End footer -->
 
 
 	</div> <!-- /.body-content -->
