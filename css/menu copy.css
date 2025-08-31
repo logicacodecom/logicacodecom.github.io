@@ -3,85 +3,89 @@
 * Navigation menu stylesheet
 * 
 * Name:			Expandable Navigation (off canvas menu)
-* Autor:			Claudia Romano
+* Autor:		Claudia Romano
 * More info:	http://codyhouse.co/gem/secondary-expandable-navigation
 * 
 ---------------------------------------------------------------------------------*/
+
 
 
 /* ------------------------------------ *
  *  Header
 /* ------------------------------------ */
 
-#tt-header {
+header {
 	position: absolute;
 	top: 0;
 	left: 0;
 	height: 90px;
 	width: 100%;
 	z-index: 9999;
-	pointer-events: none;
-	
+	/* Force Hardware Acceleration in WebKit */
 	-webkit-transform: translateZ(0);
 	-webkit-backface-visibility: hidden;
 	-webkit-transition-property: -webkit-transform;
 	-moz-transition-property: -moz-transform;
 	transition-property: transform;
-	-webkit-transition-duration: .4s;
-	-moz-transition-duration: .4s;
-	transition-duration: .4s;
+	-webkit-transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	transition-duration: 0.4s;
 }
-#tt-header.lateral-menu-is-open {
-	-webkit-transform: translate3d(-275px, 0, 0);
-	transform: translate3d(-275px, 0, 0);
+header.lateral-menu-is-open {
+	/* translate to show the lateral menu */
+	-webkit-transform: translateX(-275px);
+	-moz-transform: translateX(-275px);
+	-ms-transform: translateX(-275px);
+	-o-transform: translateX(-275px);
+	transform: translateX(-275px);
 }
-#tt-header.is-fixed {
+header.is-fixed {
 	position: fixed;
 }
-@media (max-width: 768px) {
-	#tt-header {
+@media only screen and (max-width: 768px) {
+	header {
 		height: 75px;
 	}
 }
 
 
-/* Header logo
-=============== */
+/* ------------------------------------ *
+ *  Header logo
+/* ------------------------------------ */
+
 #cd-logo {
 	display: block;
 	float: left;
 	background-color: #FFF;
 	margin: 14px 0 0 14px;
 	padding: 0 15px 15px 0px;
-	pointer-events: initial;
 }
 #cd-logo img {
 	display: block;
 	max-height: 54px;
 }
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
 	#cd-logo img {
 		max-height: 45px;
 	}
 }
 
 
-/* Header links
-================ */
+/* ------------------------------------ *
+ *  Header links
+/* ------------------------------------ */
+
 #cd-top-nav {
 	position: absolute;
-	display: none;
 	top: 0;
 	right: 90px;
 	height: 100%;
-	padding-top: 25px;
-	pointer-events: initial;
+	display: none;
 }
 #cd-top-nav ul {
 	height: 100%;
 	margin: 0;
-	padding: 0;
-	list-style: none;
+	padding-top: 22px;
 }
 #cd-top-nav li {
 	display: inline-block;
@@ -93,13 +97,11 @@
 	text-transform: uppercase;
 	font-size: 17px;
 	color: #F20000;
-	font-weight: bold;
-	font-weight: 600;
+	font-weight: 400;
 	text-decoration: none;
 }
 #cd-top-nav a.current {
 	background-color: #F20000;
-	text-decoration: line-through;
 }
 #cd-top-nav a:hover {
 	color: #F20000;
@@ -124,8 +126,10 @@
 	height: 60px;
 	width: 60px;
 	background-color: #FFF;
-	pointer-events: initial;
 	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
 #cd-menu-trigger .cd-menu-icon {
@@ -165,11 +169,17 @@
 #cd-menu-trigger.is-clicked .cd-menu-icon::before {
 	bottom: 0;
 	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
 #cd-menu-trigger.is-clicked .cd-menu-icon::after {
 	top: 0;
 	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
 
@@ -184,14 +194,23 @@
 	right: 15px;
 	top: 15px;
 	visibility: hidden;
+	/* the secondary navigation is covered by the main element */
 	z-index: 999;
 	width: 260px;
 	background-color: #181818;
 	overflow-y: auto;
-	-webkit-transform: translate3d(80px, 0, 0);
-	transform: translate3d(80px, 0, 0);
+	/* Force Hardware Acceleration in WebKit */
+	-webkit-transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
 	-webkit-transition: -webkit-transform .4s 0s, visibility 0s .4s;
+	-moz-transition: -moz-transform .4s 0s, visibility 0s .4s;
 	transition: transform .4s 0s, visibility 0s .4s;
+	/* this creates the subtle slide in animation of the navigation */
+	-webkit-transform: translateX(80px);
+	-moz-transform: translateX(80px);
+	-ms-transform: translateX(80px);
+	-o-transform: translateX(80px);
+	transform: translateX(80px);
 }
 @media only screen and (max-width: 768px) {
 	#cd-lateral-nav {
@@ -203,13 +222,11 @@
 }
 #cd-lateral-nav .cd-navigation {
 	margin: 10px 0 16px;
-	padding: 0;
-	list-style: none;
 }
 #cd-lateral-nav .menu-header {
 	background-color: rgba(255, 255, 255, 0.03);
 	margin-bottom: 22px;
-	padding: 17px 15px 15px 30px;
+	padding: 17px 15px 15px 32px;
 	text-transform: uppercase;
 	font-size: 18px;
 	font-weight: bold;
@@ -217,13 +234,13 @@
 	border-bottom: 1px dotted #333;
 }
 #cd-lateral-nav .sub-menu {
-	padding: 5px 10px 5px 15px;
+	padding: 0 10px 20px 15px;
 	display: none;
 }
 #cd-lateral-nav a {
 	display: block;
 	line-height: 31px;
-	padding: 0 16px 0 30px;
+	padding: 0 16px 0 32px;
 	text-transform: uppercase;
 	font-size: 17px;
 	font-weight: 400;
@@ -232,24 +249,26 @@
 #cd-lateral-nav a.current {
 	background-color: #3a4a4d;
 	color: #FFF;
-	text-decoration: line-through;
 }
-#cd-lateral-nav a:hover,
-#cd-lateral-nav a:focus {
+#cd-lateral-nav a:hover {
 	background-color: #F20000;
 	color: #FFF;
 	text-decoration: line-through;
 }
-@media (min-width: 768px) {
+@media only screen and (min-width: 768px) {
 	#cd-lateral-nav .cd-navigation {
 		margin: 20px 0;
 	}
 }
 #cd-lateral-nav.lateral-menu-is-open {
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	-ms-transform: translateX(0);
+	-o-transform: translateX(0);
+	transform: translateX(0);
 	visibility: visible;
 	-webkit-transition: -webkit-transform .4s 0s, visibility 0s 0s;
+	-moz-transition: -moz-transform .4s 0s, visibility 0s 0s;
 	transition: transform .4s 0s, visibility 0s 0s;
 	/* smooth the scrolling on touch devices - webkit browsers */
 	-webkit-overflow-scrolling: touch;
@@ -268,42 +287,55 @@
 	position: absolute;
 	top: 50%;
 	bottom: auto;
-	-webkit-transform: translate3d(0, -50%, 0);
-	transform: translate3d(0, -50%, 0);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
 	right: 1em;
 	background: url("../img/menu/cd-arrow.svg") no-repeat center center;
 	background-size: 8px 11px;
+	-webkit-transition-property: -webkit-transform;
+	-moz-transition-property: -moz-transform;
+	transition-property: transform;
 	-webkit-transition-duration: 0.2s;
+	-moz-transition-duration: 0.2s;
 	transition-duration: 0.2s;
 }
 #cd-lateral-nav .item-has-children > a.submenu-open::after {
-	-webkit-transform: translate3d(0, -50%, 0) rotate(90deg);
-	transform: translate3d(0, -50%, 0) rotate(90deg);
+	-webkit-transform: translateY(-50%) rotate(90deg);
+	-moz-transform: translateY(-50%) rotate(90deg);
+	-ms-transform: translateY(-50%) rotate(90deg);
+	-o-transform: translateY(-50%) rotate(90deg);
+	transform: translateY(-50%) rotate(90deg);
 }
 #cd-lateral-nav .sub-menu > li > a {
 	font-size: 16px;
 }
 
 #cd-lateral-nav .menu-separator {
-	margin: 17px 30px;
+	margin: 0 32px;
 	border-bottom: 1px solid #333;
+}
+#cd-lateral-nav .cd-single-item-wrapper .menu-separator {
+	margin: 20px 32px;
 }
 
 
 /* ------------------------------------ *
- *  Social icons
+ *  social icons
 /* ------------------------------------ */
 
 #cd-lateral-nav .social-icons {
 	display: inline-block;
-	margin-top: 15px;
-	padding: 0 30px;
+	margin-top: 20px;
+	padding: 0 32px;
 }
 #cd-lateral-nav .social-icons a {
 	float: left;
 	padding: 0;
 	margin-right: 8px;
-	font-size: 30px;
+	font-size: 32px;
 	color: #FFF;
 }
 #cd-lateral-nav .social-icons a:hover {
@@ -317,21 +349,27 @@
 /* ------------------------------------ */
 
 #body-content {
+	/* set a height and a z-index to be sure that the main element completely covers the lateral menu */
+	height: 100%;
 	position: relative;
-	min-height: 100%;
+	background-color: #f5f4e9;
 	z-index: 999;
-
+	/* Force Hardware Acceleration in WebKit */
 	-webkit-transform: translateZ(0);
 	-webkit-backface-visibility: hidden;
 	-webkit-transition-property: -webkit-transform;
 	-moz-transition-property: -moz-transform;
 	transition-property: transform;
-	-webkit-transition-duration: .4s;
-	-moz-transition-duration: .4s;
-	transition-duration: .4s;
+	-webkit-transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	transition-duration: 0.4s;
 }
 #body-content.lateral-menu-is-open {
+	/* translate to show the lateral menu - all content needs to be put in the #body-content to translate*/
 	cursor: e-resize;
-	-webkit-transform: translate3d(-260px, 0, 0);
-	transform: translate3d(-260px, 0, 0);
+	-webkit-transform: translateX(-260px);
+	-moz-transform: translateX(-260px);
+	-ms-transform: translateX(-260px);
+	-o-transform: translateX(-260px);
+	transform: translateX(-260px);
 }
