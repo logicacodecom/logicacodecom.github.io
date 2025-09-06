@@ -546,14 +546,14 @@
 
 
 	// ===============================================
-	// uniMail - Universal PHP Mail Feedback Script
+	// uniMail - Universal PHP Mail Feedback Script --REMOVED --
 	// Source: https://github.com/agragregra/uniMail
 	// ===============================================
 
 	$(document).ready(function() {
 
 		// E-mail Ajax Send
-		$("#contact-form").submit(function() { // your contact form ID.
+		$("#contact-form-REMOVE").submit(function() { // your contact form ID.
 			var th = $(this);
 			$.ajax({
 				type: "POST",
@@ -570,6 +570,43 @@
 		});
 
 	});
+
+
+	// ===============================================
+	// uniMail - Universal PHP Mail Feedback Script
+	// Source: https://github.com/agragregra/uniMail
+	// ===============================================
+
+
+
+	const form = document.getElementById("contact-form");
+	const status = document.getElementById("form-status");
+
+	form.addEventListener("submit", async function (e) {
+		e.preventDefault(); // prevent page reload
+
+		const formData = new FormData(form);
+
+		try {
+		const response = await fetch("https://api.web3forms.com/submit", {
+			method: "POST",
+			body: formData
+		});
+
+		const result = await response.json();
+
+		if (response.ok) {
+			status.innerText = "✅ Message sent successfully!";
+			form.reset();
+		} else {
+			status.innerText = "❌ Error: " + result.message;
+		}
+		} catch (error) {
+		status.innerText = "⚠️ Network error, please try again.";
+		}
+	});
+
+
 
 
 
