@@ -578,33 +578,35 @@
 	// ===============================================
 
 
+	$(document).ready(function () {
+		$("#contact-form-web3").on("submit", function (e) {
+			e.preventDefault(); // prevent default redirect
 
-	const form = document.getElementById("contact-form-web3");
-	const status = document.getElementById("form-status");
+			var $form = $(this);
+			var $status = $("#form-status");
 
-	form.addEventListener("submit", async function (e) {
-		e.preventDefault(); // prevent page reload
-
-		const formData = new FormData(form);
-
-		try {
-		const response = await fetch("https://api.web3forms.com/submit", {
+			$.ajax({
+			url: "https://api.web3forms.com/submit",
 			method: "POST",
-			body: formData
+			data: $form.serialize(), // send form fields
+			dataType: "json",
+			success: function (result) {
+				if (result.success) {
+				$status.text("✅ Message sent successfully!");
+				$form.trigger("reset"); // clear form
+				} else {
+				$status.text("❌ Error: " + result.message);
+				}
+			},
+			error: function () {
+				$status.text("⚠️ Network error, please try again.");
+			}
+			});
 		});
-
-		const result = await response.json();
-
-		if (response.ok) {
-			status.innerText = "✅ Message sent successfully!";
-			form.reset();
-		} else {
-			status.innerText = "❌ Error: " + result.message;
-		}
-		} catch (error) {
-		status.innerText = "⚠️ Network error, please try again.";
-		}
 	});
+
+
+	
 
 
 
