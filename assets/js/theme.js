@@ -573,13 +573,13 @@
 
 
 	// ===============================================
-	// uniMail - Universal PHP Mail Feedback Script
-	// Source: https://github.com/agragregra/uniMail
+	// web3forms 
+	// Source: https://web3forms.com/
 	// ===============================================
 
 
 
-	const form = document.getElementById("contact-form");
+	const form = document.getElementById("contact-form-web3");
 	const status = document.getElementById("form-status");
 
 	form.addEventListener("submit", async function (e) {
