@@ -3,6 +3,7 @@ exclude:
   - _OLD/
   - _mockups/
   - _templates/
+  - _tests/
   - CLAUDE.md
   - inner-page-template.html
   - template.html

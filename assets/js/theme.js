@@ -163,11 +163,14 @@
 	// jQuery for page scrolling feature - requires jQuery Easing plugin
 	// ==================================================================
 
+	// ponytail: not every page loads the easing plugin; fall back to jQuery's built-in easing.
+	var scrollEasing = $.easing.easeInOutExpo ? 'easeInOutExpo' : 'swing';
+
 	$('.page-scroll').bind('click', function(event) {
 		var $anchor = $(this);
 		$('html, body').stop().animate({
 			scrollTop: $($anchor.attr('href')).offset().top -14
-		}, 1500, 'easeInOutExpo');
+		}, 1500, scrollEasing);
 		event.preventDefault();
 	});
 
@@ -177,7 +180,11 @@
 	// YTPlayer (BG Youtube video): https://github.com/pupunzi/jquery.mb.YTPlayer
 	// ===========================================================================
 
-	$(".youtube-bg").mb_YTPlayer();
+	// ponytail: guard every optional plugin call. theme.js is shared by pages that load
+	// different vendor subsets, and an unguarded call aborts the whole IIFE below it.
+	if ($.fn.mb_YTPlayer) {
+		$(".youtube-bg").mb_YTPlayer();
+	}
 	
 
 
@@ -188,7 +195,9 @@
 	// =====================================================
 
 	$(window).on('load', function() {
-		
+
+		if (!$.fn.owlCarousel) { return; }
+
 		$('.owl-carousel').each(function() {
 			var $carousel = $(this);
 			$carousel.owlCarousel({
@@ -299,6 +308,7 @@
 
    // init Isotope
    var $container = $('.isotope-items-wrap');
+   if ($.fn.imagesLoaded && $.fn.isotope) {
    $container.imagesLoaded(function() {
       $container.isotope({
          itemSelector: '.isotope-item',
@@ -309,6 +319,7 @@
          }
       });
    });
+   }
 
    // Filter
    $('.isotope-filter-links button').on("click", function() {
@@ -343,6 +354,8 @@
 	// ==============================================================
 	// Magnific Popup: http://dimsemenov.com/plugins/magnific-popup/
 	// ==============================================================
+
+	if ($.fn.magnificPopup) {
 
 	// Image gallery popup (type image)
 	$('.popup-gallery').magnificPopup({
@@ -428,6 +441,8 @@
 		$.magnificPopup.close();
 	});
 
+	} // /if ($.fn.magnificPopup)
+
 
 
 	// =====================
@@ -447,10 +462,12 @@
 	// Counter-Up (requires jQuery waypoints.js plugin): https://github.com/bfintal/Counter-Up
 	// ========================================================================================
 
-	$('.counter').counterUp({
-		delay: 10,
-		time: 2000
-	});
+	if ($.fn.counterUp) {
+		$('.counter').counterUp({
+			delay: 10,
+			time: 2000
+		});
+	}
 
 
 
@@ -627,7 +644,7 @@
 
 	// Click event to scroll to top
 	$('.scrolltotop').on('click', function () {
-		$('html, body').animate({scrollTop : 0}, 1500, 'easeInOutExpo');
+		$('html, body').animate({scrollTop : 0}, 1500, scrollEasing);
 		return false;
 	});
 
@@ -644,12 +661,12 @@
 
 	// Bootstrap tooltip
 	// ==================
-   $('[data-toggle="tooltip"]').tooltip();
+   if ($.fn.tooltip) { $('[data-toggle="tooltip"]').tooltip(); }
 
 
    // Bootstrap popover
 	// ==================
-   $('[data-toggle="popover"]').popover();
+   if ($.fn.popover) { $('[data-toggle="popover"]').popover(); }
 
 
 	// Bootstrap-3 modal fix
