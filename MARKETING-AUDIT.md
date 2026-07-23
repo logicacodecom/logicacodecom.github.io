@@ -114,9 +114,9 @@ What a CFO-level prospect will actually notice.
 
 ### Facts that contradict each other on the same page
 
-- **Offices:** "Global Offices: Cairo, Dubai" (`index.html:1414`) vs "Development centers in Egypt & Eastern Europe" (`index.html:1608`).
-- **Email:** `info@logicacode.com` (`index.html:1415`) vs `hello@logicacode.com` (`index.html:1585`); `contact.html` uses `hello@`.
-- **LinkedIn:** every page links to `linkedin.com/company/**ferrycode**/` (`index.html:135`, `index.html:1427`, and in all social blocks). The highest-intent outbound link points at a different brand name.
+- ~~**Offices:** "Global Offices: Cairo, Dubai" vs "Development centers in Egypt & Eastern Europe" in the same footer.~~ **Resolved** — the development-centre line was removed from the live pages, templates, and mockups. The Cairo/Dubai contact line stands as the single statement of footprint.
+- ~~**Email:** `info@logicacode.com` vs `hello@logicacode.com` on the same page.~~ **Resolved** — standardised on `info@logicacode.com` sitewide.
+- **LinkedIn:** every page links to `linkedin.com/company/ferrycode/`. **Not a defect — confirmed correct by the owner (2026-07-23).** The company LinkedIn page still lives under the `ferrycode` handle. Do not "fix" this. Revisit only if the handle is ever migrated to match the brand.
 
 ---
 
@@ -178,8 +178,12 @@ Ordered by return, not by effort. Do not reorder without a reason.
       Header links to Services / AI Automation / About / Contact plus a visible CTA button. Desktop nav must be visible without a click. Check the untracked `components/header.html` + `assets/css/lc-nav.css` in this working tree first — this may already be built.
       *Done when:* all 5 live pages reachable from the homepage in one click, and the header renders a persistent CTA at ≥992px.
 
-- [ ] **T3 · P1 · Reconcile contact facts.** One email (`hello@` recommended — already used on `contact.html`). One office story. Correct the LinkedIn URL from `/company/ferrycode/` to the logicacode page across all pages. Verify or replace the Miami address.
-      *Done when:* `grep -rn "info@logicacode\|ferrycode" --include=*.html .` returns nothing outside `_OLD/`.
+- [~] **T3 · P1 · Reconcile contact facts.** — mostly done
+      - [x] **Email** — standardised on `info@logicacode.com` sitewide.
+      - [x] **Office story** — the "Development centers in Egypt & Eastern Europe" footer line removed everywhere (live pages, `components/footer.html`, `inner-page-template.html`, both mockups). Cairo/Dubai is now the only footprint claim.
+      - [x] **LinkedIn** — `ferrycode` handle confirmed correct by the owner. No change needed; see the note above before touching it.
+      - [ ] **Miami address** — still outstanding. "200 Tech Innovation Drive, Suite 300, Miami, FL 33101" (`index.html:1413`) remains unverified, and 33101 is a PO-box-only ZIP. Verify it or replace it.
+      *Done when:* the HQ address on `index.html` is one a prospect could look up and confirm.
 
 ### Sprint 2 — restore credibility
 
