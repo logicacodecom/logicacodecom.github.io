@@ -4,5 +4,6 @@ exclude:
   - _mockups/
   - _templates/
   - CLAUDE.md
+  - MARKETING-AUDIT.md
   - inner-page-template.html
   - template.html
