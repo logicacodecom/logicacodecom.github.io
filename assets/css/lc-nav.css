@@ -1,0 +1,808 @@
+/*---------------------------------------------------------------------------------
+ *
+ *  lc-nav.css
+ *  logicacode — Shared header, mega-menu, mobile drawer & footer nav
+ *
+ *  Colours: primary #F20000 | dark #181818 | white #FFF | grey #585858
+ *  Fonts  : Oswald (headings/nav) | Open Sans (body/descriptions)
+ *
+---------------------------------------------------------------------------------*/
+
+
+/* ==========================================================================
+   HEADER  (#lc-header)
+   Replaces the original #tt-header / #cd-logo / #cd-menu-trigger pattern
+   with a full desktop mega-menu nav while keeping the same visual language.
+   ========================================================================== */
+
+#lc-header {
+    position: fixed;
+    top: 15px;          /* sits inside the page border frame */
+    left: 15px;
+    right: 15px;
+    height: 70px;
+    z-index: 9000;
+    background-color: #FFF;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 0 20px 0 0;
+    -webkit-transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease;
+}
+
+/* Shadow added by JS on scroll */
+#lc-header.is-scrolled {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+}
+
+/* Offset the page body so content doesn't hide under fixed header */
+.lc-header-offset {
+    padding-top: 85px; /* header 70px + 15px top border */
+}
+
+
+/* --------------------------------------------------------------------------
+   LOGO
+   -------------------------------------------------------------------------- */
+
+#lc-logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0 20px;
+    height: 100%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+}
+#lc-logo img {
+    display: block;
+    max-height: 46px;
+}
+@media (max-width: 767px) {
+    #lc-logo img { max-height: 38px; }
+}
+
+
+/* --------------------------------------------------------------------------
+   DESKTOP NAVIGATION  (#lc-desktop-nav)
+   Visible on screens >= 992px
+   -------------------------------------------------------------------------- */
+
+#lc-desktop-nav {
+    display: none;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100%;
+    margin-left: auto;
+}
+
+@media (min-width: 992px) {
+    #lc-desktop-nav {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+}
+
+#lc-desktop-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100%;
+}
+
+#lc-desktop-nav ul > li {
+    position: relative;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+/* Top-level links */
+#lc-desktop-nav ul > li > a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 4px;
+    height: 100%;
+    padding: 0 14px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #181818;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+            transition: color 0.2s;
+    white-space: nowrap;
+    position: relative;
+}
+
+#lc-desktop-nav ul > li > a:hover,
+#lc-desktop-nav ul > li.lc-open > a {
+    color: #F20000;
+    text-decoration: none;
+}
+
+/* Red underline indicator */
+#lc-desktop-nav ul > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 14px;
+    right: 14px;
+    height: 2px;
+    background-color: #F20000;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s;
+            transition: opacity 0.2s;
+}
+#lc-desktop-nav ul > li > a:hover::after,
+#lc-desktop-nav ul > li.lc-open > a::after {
+    opacity: 1;
+}
+
+/* Chevron icon next to dropdown triggers */
+#lc-desktop-nav .lc-chevron {
+    font-size: 10px;
+    opacity: 0.5;
+    -webkit-transition: -webkit-transform 0.2s;
+            transition: transform 0.2s;
+    line-height: 1;
+}
+#lc-desktop-nav ul > li.lc-open .lc-chevron {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+
+/* CTA "Book a Call" button */
+#lc-desktop-nav .lc-cta > a {
+    background-color: #F20000;
+    color: #FFF !important;
+    border-radius: 2px;
+    padding: 0 18px !important;
+    height: 40px !important;
+    margin-left: 10px;
+    font-weight: 600;
+    font-size: 14px !important;
+}
+#lc-desktop-nav .lc-cta > a:hover {
+    background-color: #c90000;
+    color: #FFF !important;
+    text-decoration: none;
+}
+#lc-desktop-nav .lc-cta > a::after { display: none; }
+
+
+/* --------------------------------------------------------------------------
+   MEGA-MENU DROPDOWN  (.lc-mega)
+   -------------------------------------------------------------------------- */
+
+.lc-dropdown {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background-color: #FFF;
+    border-top: 3px solid #F20000;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    -webkit-transform: translateY(-6px);
+            transform: translateY(-6px);
+    -webkit-transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s 0.2s;
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s 0.2s;
+    z-index: 8000;
+}
+
+/* Shown state (toggled by JS hover or click) */
+li.lc-open > .lc-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-transition: opacity 0.2s ease, transform 0.2s ease;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Two-column mega layout */
+.lc-mega {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 0;
+    padding: 28px 32px;
+    min-width: 520px;
+}
+
+.lc-mega-col {
+    min-width: 200px;
+    padding-right: 32px;
+}
+.lc-mega-col:last-child { padding-right: 0; }
+
+.lc-mega-col-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #F20000;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(242,0,0,0.15);
+}
+
+.lc-mega-col ul { list-style: none; margin: 0; padding: 0; }
+
+.lc-mega-col ul li a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #181818;
+    text-decoration: none;
+    border-radius: 2px;
+    -webkit-transition: background 0.15s, color 0.15s;
+            transition: background 0.15s, color 0.15s;
+}
+.lc-mega-col ul li a:hover {
+    background-color: #fff5f5;
+    color: #F20000;
+    text-decoration: none;
+}
+
+/* Icon square before each item */
+.lc-mega-col ul li a .lc-item-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 2px;
+    background-color: #FFF5F5;
+    border: 1px solid rgba(242,0,0,0.12);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-size: 13px;
+    color: #F20000;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+}
+
+/* Single-column simple dropdown (Industries, Solutions) */
+.lc-simple {
+    padding: 10px 8px;
+    min-width: 220px;
+}
+.lc-simple ul { list-style: none; margin: 0; padding: 0; }
+.lc-simple ul li a {
+    display: block;
+    padding: 9px 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #181818;
+    text-decoration: none;
+    border-radius: 2px;
+    -webkit-transition: background 0.15s, color 0.15s;
+            transition: background 0.15s, color 0.15s;
+}
+.lc-simple ul li a:hover {
+    background-color: #fff5f5;
+    color: #F20000;
+    text-decoration: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   MOBILE HAMBURGER TRIGGER  (#lc-menu-trigger)
+   Visible below 992px
+   -------------------------------------------------------------------------- */
+
+#lc-menu-trigger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 46px;
+    height: 46px;
+    background-color: #FFF;
+    border: 1px solid rgba(0,0,0,0.08);
+    cursor: pointer;
+    margin-left: auto;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+}
+
+@media (min-width: 992px) {
+    #lc-menu-trigger { display: none; }
+}
+
+/* Three-bar icon */
+.lc-burger {
+    width: 22px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 5px;
+}
+.lc-burger span {
+    display: block;
+    height: 2px;
+    background-color: #F20000;
+    border-radius: 2px;
+    -webkit-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+}
+/* X state */
+#lc-menu-trigger.is-open .lc-burger span:nth-child(1) {
+    -webkit-transform: translateY(7px) rotate(45deg);
+            transform: translateY(7px) rotate(45deg);
+}
+#lc-menu-trigger.is-open .lc-burger span:nth-child(2) {
+    opacity: 0;
+}
+#lc-menu-trigger.is-open .lc-burger span:nth-child(3) {
+    -webkit-transform: translateY(-7px) rotate(-45deg);
+            transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* --------------------------------------------------------------------------
+   MOBILE DRAWER  (#lc-mobile-drawer)
+   Slides in from the right, same dark #181818 as existing lateral nav
+   -------------------------------------------------------------------------- */
+
+#lc-mobile-drawer {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    bottom: 15px;
+    width: 280px;
+    background-color: #181818;
+    z-index: 8900;
+    overflow-y: auto;
+    -webkit-transform: translate3d(310px, 0, 0);
+            transform: translate3d(310px, 0, 0);
+    -webkit-transition: -webkit-transform 0.35s ease, visibility 0s 0.35s;
+            transition: transform 0.35s ease, visibility 0s 0.35s;
+    visibility: hidden;
+}
+#lc-mobile-drawer.is-open {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    visibility: visible;
+    -webkit-transition: -webkit-transform 0.35s ease;
+            transition: transform 0.35s ease;
+}
+
+/* Overlay behind drawer */
+#lc-drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.55);
+    z-index: 8800;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition: opacity 0.35s ease;
+            transition: opacity 0.35s ease;
+}
+#lc-drawer-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Drawer header row */
+.lc-drawer-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.lc-drawer-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+}
+.lc-drawer-close {
+    width: 32px;
+    height: 32px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255,255,255,0.5);
+    font-size: 18px;
+    -webkit-transition: color 0.15s;
+            transition: color 0.15s;
+}
+.lc-drawer-close:hover { color: #FFF; }
+
+/* Mobile nav list */
+.lc-mobile-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.lc-mobile-nav > li {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Top-level mobile links */
+.lc-mobile-nav > li > a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 15px 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    -webkit-transition: color 0.15s;
+            transition: color 0.15s;
+}
+.lc-mobile-nav > li > a:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+
+/* Chevron on accordion items */
+.lc-mob-chev {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    -webkit-transition: -webkit-transform 0.25s;
+            transition: transform 0.25s;
+}
+.lc-mobile-nav > li.lc-mob-open .lc-mob-chev {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+
+/* Mobile sub-menu (accordion) */
+.lc-mobile-sub {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0,0,0,0.3);
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 0.3s ease;
+            transition: max-height 0.3s ease;
+}
+.lc-mobile-nav > li.lc-mob-open .lc-mobile-sub {
+    max-height: 500px;
+}
+.lc-mobile-sub li a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 10px;
+    padding: 11px 20px 11px 32px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.58);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    -webkit-transition: color 0.15s;
+            transition: color 0.15s;
+}
+.lc-mobile-sub li a:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+.lc-mobile-sub li a .lc-sub-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #F20000;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+}
+
+/* CTA area at the bottom of drawer */
+.lc-drawer-cta {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+.lc-drawer-cta-btn {
+    display: block;
+    text-align: center;
+    background-color: #F20000;
+    color: #FFF;
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 13px 20px;
+    text-decoration: none;
+    -webkit-transition: background-color 0.15s;
+            transition: background-color 0.15s;
+    margin-bottom: 10px;
+}
+.lc-drawer-cta-btn:hover {
+    background-color: #c90000;
+    color: #FFF;
+    text-decoration: none;
+}
+.lc-drawer-contact-link {
+    display: block;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    -webkit-transition: color 0.15s;
+            transition: color 0.15s;
+}
+.lc-drawer-contact-link:hover {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+}
+
+
+/* ==========================================================================
+   FOOTER  (#lc-footer)
+   ========================================================================== */
+
+#lc-footer {
+    background-color: #181818;
+    padding: 60px 0 0;
+}
+
+.lc-footer-grid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 40px 32px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.lc-footer-col {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 160px;
+            flex: 1 1 160px;
+}
+
+.lc-footer-col-head {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.lc-footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.lc-footer-col ul li {
+    margin-bottom: 8px;
+}
+.lc-footer-col ul li a {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.62);
+    text-decoration: none;
+    -webkit-transition: color 0.15s;
+            transition: color 0.15s;
+}
+.lc-footer-col ul li a:hover {
+    color: #F20000;
+    text-decoration: none;
+}
+
+/* Connect column */
+.lc-footer-email {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.62);
+    margin-bottom: 18px;
+}
+.lc-footer-email a {
+    color: rgba(255,255,255,0.62);
+    text-decoration: none;
+    -webkit-transition: color 0.15s;
+            transition: color 0.15s;
+}
+.lc-footer-email a:hover {
+    color: #F20000;
+    text-decoration: none;
+}
+
+.lc-footer-social {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+.lc-footer-social a {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    text-decoration: none;
+    -webkit-transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+            transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+.lc-footer-social a:hover {
+    background-color: #F20000;
+    color: #FFF;
+    border-color: #F20000;
+    text-decoration: none;
+}
+
+.lc-footer-book-btn {
+    display: inline-block;
+    background-color: #F20000;
+    color: #FFF;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 11px 22px;
+    text-decoration: none;
+    -webkit-transition: background-color 0.15s;
+            transition: background-color 0.15s;
+}
+.lc-footer-book-btn:hover {
+    background-color: #c90000;
+    color: #FFF;
+    text-decoration: none;
+}
+
+/* Footer bottom bar */
+.lc-footer-bottom {
+    padding: 20px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 10px;
+}
+
+.lc-footer-copyright {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.32);
+    line-height: 1.7;
+}
+.lc-footer-copyright strong {
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+}
+
+.lc-footer-legal {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 20px;
+}
+.lc-footer-legal a {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.32);
+    text-decoration: none;
+    -webkit-transition: color 0.15s;
+            transition: color 0.15s;
+}
+.lc-footer-legal a:hover {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    .lc-footer-grid { gap: 32px 20px; }
+    .lc-footer-col { -ms-flex: 1 1 140px; flex: 1 1 140px; }
+    .lc-footer-bottom { -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<!--
+    logicacode — Base Page Template
+    Copy this file to create any new page.
+
+    Steps:
+    1. Update <title>, meta description, OG tags, and canonical URL
+    2. Replace the <!-- PAGE CONTENT --> comment with your section HTML
+    3. Save to the correct directory (e.g., /services/software-engineering/index.html)
+-->
+
+<html lang="en">
+
+<head>
+
+    <!-- ── REQUIRED: update per page ──────────────────────────────────── -->
+    <title>Page Title — logicacode</title>
+    <meta name="description" content="Page description (150–160 chars).">
+
+    <!-- Open Graph -->
+    <meta property="og:title"       content="Page Title — logicacode">
+    <meta property="og:description" content="Page description (150–160 chars).">
+    <meta property="og:image"       content="https://logicacode.com/assets/img/og-default.jpg">
+    <meta property="og:url"         content="https://logicacode.com/PAGE-PATH/">
+    <meta property="og:type"        content="website">
+    <meta property="og:site_name"   content="logicacode">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://logicacode.com/PAGE-PATH/">
+    <!-- ── END: per-page fields ───────────────────────────────────────── -->
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="https://logicacode.com/">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/img/logicacode.ico/favicon.ico" type="image/x-icon">
+    <link rel="icon"          href="/assets/img/logicacode.ico/favicon.ico" type="image/x-icon">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1Z4EW6VB3V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-1Z4EW6VB3V');
+    </script>
+
+    <!-- Cookie consent (Usercentrics) -->
+    <script id="usercentrics-cmp"
+            src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
+            data-settings-id="Wtpma_KU1m3fA0"
+            async></script>
+
+    <!-- Google Fonts: Oswald + Open Sans (matching existing site) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+    <!-- FontAwesome (icons used in nav, footer, and content) -->
+    <link rel="stylesheet" href="/assets/vendor/fontawesome/css/fontawesome-all.min.css">
+
+    <!-- Existing template styles (keep for page-content sections) -->
+    <link rel="stylesheet" href="/assets/css/helper.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- New shared nav + footer styles -->
+    <link rel="stylesheet" href="/assets/css/lc-nav.css">
+
+    <!-- Component loader (injects header.html + footer.html) — load before lc-nav.js -->
+    <script src="/assets/js/lc-components.js" defer></script>
+
+    <!-- Nav behaviour (sticky, mega-menu, mobile drawer) -->
+    <script src="/assets/js/lc-nav.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- ── SKIP LINK (accessibility) ────────────────────────────── -->
+    <a class="lc-skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- ── HEADER MOUNT (lc-components.js replaces this) ────────── -->
+    <div id="lc-header-mount"></div>
+
+    <!-- ── PAGE BORDERS (matches existing site frame) ─────────────── -->
+    <div class="border-top"></div>
+    <div class="border-bottom"></div>
+    <div class="border-left"></div>
+    <div class="border-right"></div>
+
+    <!-- ── PAGE PRELOADER ─────────────────────────────────────────── -->
+    <div id="preloader"><div class="pulse"></div></div>
+
+    <!-- ── MAIN CONTENT ───────────────────────────────────────────── -->
+    <main id="main-content" class="lc-header-offset">
+
+        <!-- Page header (optional — remove if page has a full-bleed hero instead) -->
+        <div class="page-header">
+            <div class="page-header-inner">
+                <div class="page-header-caption">
+                    <h1 class="page-header-title">Page Title</h1>
+                    <div class="page-header-subtitle">One-line description of this page</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════
+             PAGE CONTENT — replace everything below
+             ═══════════════════════════════════════════ -->
+
+        <div id="body-content">
+            <div id="page-content">
+                <section class="section-wrap">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Your page content goes here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div><!-- /#page-content -->
+        </div><!-- /#body-content -->
+
+        <!-- ══════════════════════════════════════════ -->
+
+    </main>
+
+    <!-- ── FOOTER MOUNT (lc-components.js replaces this) ─────────── -->
+    <div id="lc-footer-mount"></div>
+
+    <!-- ── SCROLL TO TOP (matches existing site) ──────────────────── -->
+    <a class="scrolltotop" href="#"><i class="fas fa-angle-up"></i></a>
+
+    <!-- ── VENDOR JS (jQuery + Bootstrap — required by theme.js) ──── -->
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- ── EXISTING THEME JS (scroll-to-top, preloader, etc.) ─────── -->
+    <script src="/assets/js/theme.js"></script>
+
+    <!--
+        Add page-specific scripts below this line.
+        e.g. <script src="/assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+    -->
+
+</body>
+
+</html>

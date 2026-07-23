@@ -1,0 +1,203 @@
+<!-- =======================================================================
+     logicacode — Shared Header Component
+     Injected into every page by /assets/js/lc-components.js
+     ======================================================================= -->
+
+<!-- Overlay (behind mobile drawer) -->
+<div id="lc-drawer-overlay"></div>
+
+<header id="lc-header">
+
+    <!-- Logo -->
+    <a id="lc-logo" href="/">
+        <img src="/assets/img/logo.png" alt="logicacode">
+    </a>
+
+    <!-- ── DESKTOP NAVIGATION ── -->
+    <nav id="lc-desktop-nav" aria-label="Main navigation">
+        <ul>
+
+            <!-- Services (mega-menu) -->
+            <li class="lc-has-dropdown" data-hover-delay="150">
+                <a href="/services/" aria-haspopup="true" aria-expanded="false">
+                    Services
+                    <i class="lc-chevron fas fa-chevron-down"></i>
+                </a>
+                <div class="lc-dropdown lc-mega" role="menu">
+                    <div class="lc-mega-col">
+                        <div class="lc-mega-col-label">Core Services</div>
+                        <ul>
+                            <li>
+                                <a href="/services/software-engineering/" role="menuitem">
+                                    <span class="lc-item-icon"><i class="fas fa-code"></i></span>
+                                    Software Engineering
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/services/ai-automation/" role="menuitem">
+                                    <span class="lc-item-icon"><i class="fas fa-robot"></i></span>
+                                    AI &amp; Intelligent Automation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/services/cloud-devops/" role="menuitem">
+                                    <span class="lc-item-icon"><i class="fas fa-cloud"></i></span>
+                                    Cloud &amp; DevOps
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="lc-mega-col">
+                        <div class="lc-mega-col-label">Specialized</div>
+                        <ul>
+                            <li>
+                                <a href="/services/quality-engineering/" role="menuitem">
+                                    <span class="lc-item-icon"><i class="fas fa-check-circle"></i></span>
+                                    Quality Engineering
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/services/cto-as-a-service/" role="menuitem">
+                                    <span class="lc-item-icon"><i class="fas fa-bullseye"></i></span>
+                                    CTO-as-a-Service
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/services/emerging-technologies/" role="menuitem">
+                                    <span class="lc-item-icon"><i class="fas fa-flask"></i></span>
+                                    Emerging Technologies
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Solutions (simple dropdown) -->
+            <li class="lc-has-dropdown" data-hover-delay="150">
+                <a href="/solutions/" aria-haspopup="true" aria-expanded="false">
+                    Solutions
+                    <i class="lc-chevron fas fa-chevron-down"></i>
+                </a>
+                <div class="lc-dropdown lc-simple" role="menu">
+                    <ul>
+                        <li><a href="/solutions/ai-compliance-risk/" role="menuitem">AI for Compliance &amp; Risk</a></li>
+                        <li><a href="/solutions/enterprise-ai-integration/" role="menuitem">Enterprise AI Integration</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Industries (simple dropdown) -->
+            <li class="lc-has-dropdown" data-hover-delay="150">
+                <a href="/industries/" aria-haspopup="true" aria-expanded="false">
+                    Industries
+                    <i class="lc-chevron fas fa-chevron-down"></i>
+                </a>
+                <div class="lc-dropdown lc-simple" role="menu">
+                    <ul>
+                        <li><a href="/industries/us-startups/" role="menuitem">US Startups</a></li>
+                        <li><a href="/industries/fintech-regtech/" role="menuitem">FinTech &amp; RegTech</a></li>
+                        <li><a href="/industries/healthcare/" role="menuitem">Healthcare</a></li>
+                        <li><a href="/industries/smbs/" role="menuitem">SMBs</a></li>
+                        <li><a href="/industries/enterprise/" role="menuitem">Enterprise</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Top-level links -->
+            <li><a href="/packages/">Packages</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+
+            <!-- CTA -->
+            <li class="lc-cta">
+                <a href="/contact/#book-a-call">
+                    <i class="far fa-calendar-alt"></i>&nbsp; Book a Call
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- ── MOBILE HAMBURGER ── -->
+    <button id="lc-menu-trigger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="lc-mobile-drawer">
+        <span class="lc-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </button>
+
+</header>
+
+<!-- ── MOBILE DRAWER ── -->
+<nav id="lc-mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+
+    <div class="lc-drawer-header">
+        <span class="lc-drawer-label">Menu</span>
+        <button class="lc-drawer-close" aria-label="Close navigation menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <ul class="lc-mobile-nav">
+
+        <!-- Services -->
+        <li class="lc-mob-has-sub">
+            <a href="/services/" aria-haspopup="true">
+                Services
+                <i class="lc-mob-chev fas fa-chevron-down"></i>
+            </a>
+            <ul class="lc-mobile-sub">
+                <li><a href="/services/software-engineering/"><span class="lc-sub-dot"></span>Software Engineering</a></li>
+                <li><a href="/services/ai-automation/"><span class="lc-sub-dot"></span>AI &amp; Intelligent Automation</a></li>
+                <li><a href="/services/cloud-devops/"><span class="lc-sub-dot"></span>Cloud &amp; DevOps</a></li>
+                <li><a href="/services/quality-engineering/"><span class="lc-sub-dot"></span>Quality Engineering</a></li>
+                <li><a href="/services/cto-as-a-service/"><span class="lc-sub-dot"></span>CTO-as-a-Service</a></li>
+                <li><a href="/services/emerging-technologies/"><span class="lc-sub-dot"></span>Emerging Technologies</a></li>
+            </ul>
+        </li>
+
+        <!-- Solutions -->
+        <li class="lc-mob-has-sub">
+            <a href="/solutions/" aria-haspopup="true">
+                Solutions
+                <i class="lc-mob-chev fas fa-chevron-down"></i>
+            </a>
+            <ul class="lc-mobile-sub">
+                <li><a href="/solutions/ai-compliance-risk/"><span class="lc-sub-dot"></span>AI for Compliance &amp; Risk</a></li>
+                <li><a href="/solutions/enterprise-ai-integration/"><span class="lc-sub-dot"></span>Enterprise AI Integration</a></li>
+            </ul>
+        </li>
+
+        <!-- Industries -->
+        <li class="lc-mob-has-sub">
+            <a href="/industries/" aria-haspopup="true">
+                Industries
+                <i class="lc-mob-chev fas fa-chevron-down"></i>
+            </a>
+            <ul class="lc-mobile-sub">
+                <li><a href="/industries/us-startups/"><span class="lc-sub-dot"></span>US Startups</a></li>
+                <li><a href="/industries/fintech-regtech/"><span class="lc-sub-dot"></span>FinTech &amp; RegTech</a></li>
+                <li><a href="/industries/healthcare/"><span class="lc-sub-dot"></span>Healthcare</a></li>
+                <li><a href="/industries/smbs/"><span class="lc-sub-dot"></span>SMBs</a></li>
+                <li><a href="/industries/enterprise/"><span class="lc-sub-dot"></span>Enterprise</a></li>
+            </ul>
+        </li>
+
+        <!-- Top-level links -->
+        <li><a href="/packages/">Packages</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+
+    </ul>
+
+    <!-- CTA at bottom of drawer -->
+    <div class="lc-drawer-cta">
+        <a href="/contact/#book-a-call" class="lc-drawer-cta-btn">
+            <i class="far fa-calendar-alt"></i>&nbsp; Book a Call
+        </a>
+        <a href="/contact/" class="lc-drawer-contact-link">or send us a message &rarr;</a>
+    </div>
+
+</nav>

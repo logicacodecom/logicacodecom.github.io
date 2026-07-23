@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--
+	MOCKUP — pruned production navigation (T2)
+	Purpose : design approval before wiring the shared header into live pages
+
+	Differs from nav-mockup.html (which stays as the full 16-page roadmap):
+	  - every link points at a page that actually exists and returns 200
+	  - no dropdowns: nothing has more than one page behind it yet
+	  - brand fonts Oswald + Open Sans, per CLAUDE.md (the roadmap mockup
+	    used Outfit + Plus Jakarta Sans, which are off-brand)
+	  - "Book a Call" points at /contact.html, not Calendly. Whether to add a
+	    real calendar is T9, a separate decision from navigation.
+
+	Uses the real /assets/css/lc-nav.css and /assets/js/lc-nav.js, so what you
+	see here is exactly what production will render.
+-->
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>[MOCKUP] Pruned navigation — logicacode</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Oswald:400,700,300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet">
+
+	<link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/vendor/fontawesome/css/fontawesome-all.min.css">
+	<link rel="stylesheet" href="../assets/css/helper.css">
+	<link rel="stylesheet" href="../assets/css/theme.css">
+	<link rel="stylesheet" href="../assets/css/lc-nav.css">
+
+	<style>
+		.mockup-banner {
+			background: #F20000; color: #fff; text-align: center;
+			padding: 10px 20px; font-family: 'Oswald', sans-serif;
+			font-size: 15px; letter-spacing: .05em;
+		}
+		.mockup-note {
+			background: #181818; color: rgba(255,255,255,.75);
+			font-family: 'Open Sans', sans-serif; font-size: 13px;
+			padding: 14px 20px; text-align: center;
+		}
+		.mockup-note code { color: #F20000; background: none; }
+		.demo-body { padding: 80px 0 120px; font-family: 'Open Sans', sans-serif; }
+		.demo-body h1 { font-family: 'Oswald', sans-serif; }
+		.link-check-wrap { max-width: 640px; margin: 40px auto 0; overflow-x: auto; }
+		.link-check { width: 100%; font-size: 14px; }
+		.link-check td { padding: 6px 12px; border-bottom: 1px solid #eee; }
+		.link-check .ok { color: #1a7f37; font-weight: 600; }
+		.demo-body h1 { font-size: 28px; word-wrap: break-word; }
+	</style>
+</head>
+
+<body>
+
+	<div class="mockup-banner">
+		&#9888; MOCKUP — pruned production navigation — awaiting approval
+	</div>
+	<div class="mockup-note">
+		Resize below <code>992px</code> to see the hamburger and mobile drawer. Above it, the nav is always visible.
+	</div>
+
+	<!-- ── HEADER (pruned) ── -->
+	<div id="lc-drawer-overlay"></div>
+
+	<header id="lc-header">
+
+		<a id="lc-logo" href="/">
+			<img src="../assets/img/logo.png" alt="logicacode">
+		</a>
+
+		<nav id="lc-desktop-nav" aria-label="Main navigation">
+			<ul>
+				<li><a href="/services.html">Services</a></li>
+				<li><a href="/services/ai-automation.html">AI Automation</a></li>
+				<li><a href="/about-us.html">About</a></li>
+				<li><a href="/contact.html">Contact</a></li>
+				<li class="lc-cta">
+					<a href="/contact.html"><i class="far fa-calendar-alt"></i>&nbsp; Book a Call</a>
+				</li>
+			</ul>
+		</nav>
+
+		<button id="lc-menu-trigger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="lc-mobile-drawer">
+			<span class="lc-burger"><span></span><span></span><span></span></span>
+		</button>
+
+	</header>
+
+	<!-- ── MOBILE DRAWER (pruned) ── -->
+	<nav id="lc-mobile-drawer" aria-label="Mobile navigation" aria-hidden="true">
+
+		<div class="lc-drawer-header">
+			<span class="lc-drawer-label">Menu</span>
+			<button class="lc-drawer-close" aria-label="Close navigation menu">
+				<i class="fas fa-times"></i>
+			</button>
+		</div>
+
+		<ul class="lc-mobile-nav">
+			<li><a href="/services.html">Services</a></li>
+			<li><a href="/services/ai-automation.html">AI Automation</a></li>
+			<li><a href="/about-us.html">About</a></li>
+			<li><a href="/contact.html">Contact</a></li>
+		</ul>
+
+		<div class="lc-drawer-cta">
+			<a href="/contact.html" class="lc-drawer-cta-btn">
+				<i class="far fa-calendar-alt"></i>&nbsp; Book a Call
+			</a>
+			<a href="/contact.html" class="lc-drawer-contact-link">or send us a message &rarr;</a>
+		</div>
+
+	</nav>
+
+	<!-- ── Filler so the sticky/scrolled state is visible ── -->
+	<div class="demo-body">
+		<div class="container">
+			<h1>Scroll to see the header's <span class="bg-main text-white">is-scrolled</span> state</h1>
+
+			<div class="link-check-wrap">
+			<table class="link-check">
+				<tr><td colspan="2"><strong>Every nav link resolves</strong></td></tr>
+				<tr><td>/services.html</td><td class="ok">200</td></tr>
+				<tr><td>/services/ai-automation.html</td><td class="ok">200</td></tr>
+				<tr><td>/about-us.html</td><td class="ok">200</td></tr>
+				<tr><td>/contact.html</td><td class="ok">200</td></tr>
+				<tr><td>/ (logo)</td><td class="ok">200</td></tr>
+			</table>
+			</div>
+
+			<p style="max-width:640px;margin:60px auto 0;color:#585858;">
+				Dropdowns are deliberately absent. Services has exactly one child page today
+				(<em>AI Automation</em>), so it is promoted to a top-level link instead of hiding
+				behind a menu. Restore the mega-menu from
+				<code>_mockups/nav-mockup.html</code> once the other service pages exist.
+			</p>
+		</div>
+	</div>
+
+	<script src="../assets/js/lc-nav.js" defer></script>
+</body>
+</html>

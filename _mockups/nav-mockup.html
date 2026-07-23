@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>logicacode — Nav Mockup (Desktop + Mobile)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:   #2D5BFF;
+    --dark:   #1A1A2E;
+    --light:  #F0F4FF;
+    --white:  #FFFFFF;
+    --gray:   #666666;
+    --border: rgba(255,255,255,0.10);
+    --shadow: 0 4px 24px rgba(0,0,0,0.18);
+    --radius: 10px;
+    --font-head: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: #e8ecf5;
+    padding: 0;
+    color: var(--dark);
+  }
+
+  /* ─── ANNOTATION LABELS ─────────────────────────── */
+  .annotation {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #888;
+    padding: 24px 32px 8px;
+  }
+
+  /* ══════════════════════════════════════════════════
+     DESKTOP HEADER
+  ══════════════════════════════════════════════════ */
+
+  .lc-header {
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 68px;
+    position: relative;
+    /* simulate sticky shadow */
+    box-shadow: var(--shadow);
+  }
+
+  /* Logo */
+  .lc-logo {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .lc-logo span.dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+
+  /* Desktop Nav */
+  .lc-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+  }
+
+  .lc-nav > li {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .lc-nav > li > a {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    padding: 0 14px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color .2s;
+    white-space: nowrap;
+  }
+  .lc-nav > li > a:hover,
+  .lc-nav > li.open > a {
+    color: var(--white);
+  }
+
+  /* Chevron */
+  .lc-nav > li > a .chev {
+    font-size: 10px;
+    opacity: 0.6;
+    transition: transform .2s;
+  }
+  .lc-nav > li.open > a .chev {
+    transform: rotate(180deg);
+  }
+
+  /* Active indicator line */
+  .lc-nav > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 14px; right: 14px;
+    height: 2px;
+    background: var(--blue);
+    border-radius: 2px 2px 0 0;
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .lc-nav > li > a:hover::after,
+  .lc-nav > li.open > a::after {
+    opacity: 1;
+  }
+
+  /* CTA */
+  .lc-nav .cta-link > a {
+    background: var(--blue);
+    color: var(--white) !important;
+    border-radius: 6px;
+    padding: 0 18px;
+    height: 36px;
+    margin-left: 8px;
+    font-weight: 600;
+    font-size: 13.5px;
+  }
+  .lc-nav .cta-link > a::after { display: none; }
+  .lc-nav .cta-link > a:hover { background: #1d44e0; }
+
+  /* ─── MEGA-MENU DROPDOWN ─────────────────────────── */
+
+  .mega-menu {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    background: var(--white);
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 32px;
+    display: flex;
+    gap: 32px;
+    min-width: 480px;
+    border-top: 3px solid var(--blue);
+    /* shown open for mockup */
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mega-col {
+    min-width: 160px;
+  }
+  .mega-col-label {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .mega-col ul { list-style: none; }
+  .mega-col ul li { margin-bottom: 4px; }
+  .mega-col ul li a {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--dark);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background .15s, color .15s;
+  }
+  .mega-col ul li a:hover {
+    background: var(--light);
+    color: var(--blue);
+  }
+  .mega-col ul li a .ico {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: var(--light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* Simple dropdown (Industries) */
+  .simple-menu {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    background: var(--white);
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px 8px;
+    min-width: 220px;
+    border-top: 3px solid var(--blue);
+    opacity: 1;
+  }
+  .simple-menu ul { list-style: none; }
+  .simple-menu ul li a {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--dark);
+    text-decoration: none;
+    display: block;
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: background .15s, color .15s;
+  }
+  .simple-menu ul li a:hover {
+    background: var(--light);
+    color: var(--blue);
+  }
+
+  /* ─── STICKY STATE PREVIEW ─────────────────────── */
+  .header-sticky {
+    background: rgba(26,26,46,0.97);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.28);
+  }
+  .sticky-badge {
+    position: absolute;
+    top: 8px; right: 8px;
+    font-size: 10px;
+    background: var(--blue);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-family: var(--font-body);
+    font-weight: 600;
+  }
+
+  /* ══════════════════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════════════════ */
+  .lc-footer {
+    background: var(--dark);
+    padding: 60px 40px 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-col-head {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; }
+  .footer-col ul li a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.70);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .footer-col ul li a:hover { color: var(--white); }
+  .footer-connect-email {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+  }
+  .footer-social {
+    display: flex; gap: 10px; margin-bottom: 20px;
+  }
+  .footer-social a {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    transition: background .15s, color .15s;
+  }
+  .footer-social a:hover { background: var(--blue); color: white; border-color: var(--blue); }
+  .footer-book-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--blue);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .15s;
+  }
+  .footer-book-btn:hover { background: #1d44e0; }
+  .footer-bottom {
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom-left {
+    font-size: 13px;
+    color: rgba(255,255,255,0.38);
+  }
+  .footer-bottom-left strong { color: rgba(255,255,255,0.55); font-weight: 500; }
+  .footer-bottom-right {
+    display: flex; gap: 20px;
+  }
+  .footer-bottom-right a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.38);
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .footer-bottom-right a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ══════════════════════════════════════════════════
+     MOBILE NAV
+  ══════════════════════════════════════════════════ */
+
+  .mobile-frame {
+    width: 375px;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.22);
+    margin: 0 auto;
+  }
+  .mobile-header {
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 60px;
+  }
+  .mobile-logo {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .hamburger-btn {
+    width: 36px; height: 36px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .hamburger-btn span {
+    display: block;
+    width: 22px; height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: all .3s;
+  }
+  /* "open" state: X icon */
+  .hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+  .hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile drawer */
+  .mobile-drawer {
+    background: var(--dark);
+    overflow-y: auto;
+    max-height: 560px;
+  }
+  .mobile-nav-list { list-style: none; }
+  .mobile-nav-item {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .mobile-nav-item > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.88);
+    text-decoration: none;
+    font-family: var(--font-body);
+    transition: color .15s;
+  }
+  .mobile-nav-item > a:hover { color: white; }
+  .mobile-nav-item > a .chev-m {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    transition: transform .25s;
+  }
+  .mobile-nav-item.open > a .chev-m { transform: rotate(180deg); }
+
+  /* Accordion sub-list */
+  .mobile-sub {
+    list-style: none;
+    background: rgba(0,0,0,0.25);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .3s ease;
+  }
+  .mobile-nav-item.open .mobile-sub { max-height: 400px; }
+  .mobile-sub li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 24px 11px 36px;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.62);
+    text-decoration: none;
+    font-family: var(--font-body);
+    transition: color .15s;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .mobile-sub li a:hover { color: white; }
+  .mobile-sub li a .sub-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+
+  .mobile-cta-row {
+    padding: 20px 24px;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .mobile-cta-btn {
+    display: block;
+    text-align: center;
+    background: var(--blue);
+    color: white;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 13px;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .mobile-contact-link {
+    display: block;
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    text-decoration: none;
+    font-family: var(--font-body);
+  }
+
+  /* ══════════════════════════════════════════════════
+     LAYOUT WRAPPER FOR MOCKUP PAGE
+  ══════════════════════════════════════════════════ */
+  .mockup-section {
+    padding: 20px 0 40px;
+  }
+  .mockup-section + .mockup-section {
+    border-top: 2px dashed #c5cde0;
+  }
+  .container-demo {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .row-demo {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .note-box {
+    background: white;
+    border-left: 3px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #444;
+    margin: 16px 0 8px;
+    line-height: 1.6;
+  }
+  .note-box strong { color: var(--blue); }
+
+  h2.section-title {
+    font-family: var(--font-head);
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+    margin: 8px 32px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #d0d7e8;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 — DESKTOP NAV (DEFAULT STATE)
+══════════════════════════════════════════════════ -->
+<div class="mockup-section">
+  <div class="annotation">MOCKUP — DESKTOP HEADER — DEFAULT STATE</div>
+  <h2 class="section-title">Scrolled to top (no shadow)</h2>
+
+  <header class="lc-header">
+    <!-- Logo -->
+    <a href="/" class="lc-logo">
+      <span class="dot"></span>logicacode
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav>
+      <ul class="lc-nav">
+        <!-- Services -->
+        <li>
+          <a href="#">Services <span class="chev">▾</span></a>
+        </li>
+        <!-- Solutions -->
+        <li>
+          <a href="#">Solutions <span class="chev">▾</span></a>
+        </li>
+        <!-- Industries -->
+        <li>
+          <a href="#">Industries <span class="chev">▾</span></a>
+        </li>
+        <!-- Top-level -->
+        <li><a href="/packages">Packages</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <!-- CTA -->
+        <li class="cta-link">
+          <a href="https://calendly.com" target="_blank">Book a Call →</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container-demo">
+    <div class="note-box">
+      <strong>Logo:</strong> Wordmark-only using Outfit Bold — the blue dot acts as a brand accent without needing a separate image file (swap for SVG logo when ready).<br>
+      <strong>Nav items:</strong> 14px Plus Jakarta Sans Medium, 82% white at rest → 100% on hover/active.<br>
+      <strong>CTA button:</strong> "Book a Call →" in solid blue — always visible, not inside a dropdown.
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 — STICKY STATE
+══════════════════════════════════════════════════ -->
+<div class="mockup-section">
+  <div class="annotation">DESKTOP HEADER — STICKY / SCROLLED STATE</div>
+  <h2 class="section-title">After user scrolls 60px+ (backdrop blur + stronger shadow)</h2>
+
+  <header class="lc-header header-sticky" style="position:relative;">
+    <a href="/" class="lc-logo"><span class="dot"></span>logicacode</a>
+    <nav>
+      <ul class="lc-nav">
+        <li><a href="#">Services <span class="chev">▾</span></a></li>
+        <li><a href="#">Solutions <span class="chev">▾</span></a></li>
+        <li><a href="#">Industries <span class="chev">▾</span></a></li>
+        <li><a href="/packages">Packages</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li class="cta-link"><a href="#">Book a Call →</a></li>
+      </ul>
+    </nav>
+    <span class="sticky-badge">sticky active</span>
+  </header>
+
+  <div class="container-demo">
+    <div class="note-box">
+      <strong>Sticky trigger:</strong> JS adds <code>.is-sticky</code> class at 60px scroll. Applies <code>backdrop-filter: blur(10px)</code> + stronger box-shadow. Same height — no layout shift.
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 — SERVICES MEGA-MENU OPEN
+══════════════════════════════════════════════════ -->
+<div class="mockup-section">
+  <div class="annotation">DESKTOP — SERVICES MEGA-MENU OPEN</div>
+  <h2 class="section-title">Hover/click "Services" — two-column mega-menu</h2>
+
+  <header class="lc-header" style="overflow:visible; position:relative; z-index:100;">
+    <a href="/" class="lc-logo"><span class="dot"></span>logicacode</a>
+    <nav>
+      <ul class="lc-nav">
+        <li class="open" style="position:relative;">
+          <a href="#">Services <span class="chev">▾</span></a>
+          <!-- MEGA MENU -->
+          <div class="mega-menu">
+            <div class="mega-col">
+              <div class="mega-col-label">Core Services</div>
+              <ul>
+                <li><a href="#"><span class="ico">⚙️</span>Software Engineering</a></li>
+                <li><a href="#"><span class="ico">🤖</span>AI & Intelligent Automation</a></li>
+                <li><a href="#"><span class="ico">☁️</span>Cloud & DevOps</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <div class="mega-col-label">Specialized</div>
+              <ul>
+                <li><a href="#"><span class="ico">✅</span>Quality Engineering</a></li>
+                <li><a href="#"><span class="ico">🎯</span>CTO-as-a-Service</a></li>
+                <li><a href="#"><span class="ico">🔬</span>Emerging Technologies</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">Solutions <span class="chev">▾</span></a></li>
+        <li><a href="#">Industries <span class="chev">▾</span></a></li>
+        <li><a href="/packages">Packages</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li class="cta-link"><a href="#">Book a Call →</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div style="height:240px; background: linear-gradient(180deg, rgba(45,91,255,0.04) 0%, transparent 100%);"></div>
+
+  <div class="container-demo">
+    <div class="note-box">
+      <strong>Two-column layout:</strong> "Core Services" / "Specialized" column labels in blue 10px uppercase.<br>
+      <strong>Icons:</strong> Emoji placeholders — will be replaced with SVG icons or Lucide icons in production.<br>
+      <strong>Border:</strong> 3px solid <code>#2D5BFF</code> top edge connects menu to nav bar visually.<br>
+      <strong>Interaction:</strong> Opens on hover (desktop) with 150ms delay to prevent accidental triggers.
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 — INDUSTRIES SIMPLE DROPDOWN
+══════════════════════════════════════════════════ -->
+<div class="mockup-section">
+  <div class="annotation">DESKTOP — INDUSTRIES SIMPLE DROPDOWN</div>
+  <h2 class="section-title">Hover "Industries" — single-column dropdown</h2>
+
+  <header class="lc-header" style="overflow:visible; position:relative; z-index:100;">
+    <a href="/" class="lc-logo"><span class="dot"></span>logicacode</a>
+    <nav>
+      <ul class="lc-nav">
+        <li><a href="#">Services <span class="chev">▾</span></a></li>
+        <li><a href="#">Solutions <span class="chev">▾</span></a></li>
+        <li class="open" style="position:relative;">
+          <a href="#">Industries <span class="chev">▾</span></a>
+          <div class="simple-menu">
+            <ul>
+              <li><a href="#">🚀 US Startups</a></li>
+              <li><a href="#">🏦 FinTech &amp; RegTech</a></li>
+              <li><a href="#">🏥 Healthcare</a></li>
+              <li><a href="#">🏢 SMBs</a></li>
+              <li><a href="#">🌐 Enterprise</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="/packages">Packages</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li class="cta-link"><a href="#">Book a Call →</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div style="height:200px;"></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 — FOOTER
+══════════════════════════════════════════════════ -->
+<div class="mockup-section">
+  <div class="annotation">FOOTER — 4-COLUMN LAYOUT</div>
+  <h2 class="section-title">Full-width footer</h2>
+
+  <footer class="lc-footer">
+    <div class="footer-grid">
+      <!-- Col 1: Company -->
+      <div class="footer-col">
+        <div class="footer-col-head">Company</div>
+        <ul>
+          <li><a href="/about">About logicacode</a></li>
+          <li><a href="/methodology">Our Methodology</a></li>
+          <li><a href="/packages">Packages</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <!-- Col 2: Services -->
+      <div class="footer-col">
+        <div class="footer-col-head">Services</div>
+        <ul>
+          <li><a href="/services/software-engineering">Software Engineering</a></li>
+          <li><a href="/services/ai-automation">AI &amp; Intelligent Automation</a></li>
+          <li><a href="/services/cloud-devops">Cloud &amp; DevOps</a></li>
+          <li><a href="/services/quality-engineering">Quality Engineering</a></li>
+          <li><a href="/services/cto-as-a-service">CTO-as-a-Service</a></li>
+          <li><a href="/services/emerging-technologies">Emerging Technologies</a></li>
+        </ul>
+      </div>
+      <!-- Col 3: Industries -->
+      <div class="footer-col">
+        <div class="footer-col-head">Industries</div>
+        <ul>
+          <li><a href="/industries/us-startups">US Startups</a></li>
+          <li><a href="/industries/fintech-regtech">FinTech &amp; RegTech</a></li>
+          <li><a href="/industries/healthcare">Healthcare</a></li>
+          <li><a href="/industries/smbs">SMBs</a></li>
+          <li><a href="/industries/enterprise">Enterprise</a></li>
+        </ul>
+      </div>
+      <!-- Col 4: Connect -->
+      <div class="footer-col">
+        <div class="footer-col-head">Connect</div>
+        <p class="footer-connect-email">✉️ info@logicacode.com</p>
+        <div class="footer-social">
+          <a href="#" title="LinkedIn">in</a>
+          <a href="#" title="Twitter/X">𝕏</a>
+          <a href="#" title="GitHub">⌥</a>
+        </div>
+        <a href="https://calendly.com" class="footer-book-btn">📅 Book a Call</a>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 logicacode. All rights reserved.
+      </div>
+      <div class="footer-bottom-right">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 — MOBILE NAV
+══════════════════════════════════════════════════ -->
+<div class="mockup-section">
+  <div class="annotation">MOBILE — 375px FRAME</div>
+  <h2 class="section-title">Mobile header + drawer (Services accordion open)</h2>
+
+  <div class="container-demo" style="padding-bottom:40px;">
+    <div class="row-demo">
+
+      <!-- STATE 1: Closed -->
+      <div>
+        <div style="font-size:12px; font-weight:600; color:#888; margin-bottom:10px; text-transform:uppercase; letter-spacing:.06em;">Closed</div>
+        <div class="mobile-frame">
+          <div class="mobile-header">
+            <div class="mobile-logo"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#2D5BFF;margin-right:6px;"></span>logicacode</div>
+            <div class="hamburger-btn">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATE 2: Open, Services expanded -->
+      <div>
+        <div style="font-size:12px; font-weight:600; color:#888; margin-bottom:10px; text-transform:uppercase; letter-spacing:.06em;">Open — Services expanded</div>
+        <div class="mobile-frame">
+          <div class="mobile-header">
+            <div class="mobile-logo"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#2D5BFF;margin-right:6px;"></span>logicacode</div>
+            <div class="hamburger-btn open">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="mobile-drawer">
+            <ul class="mobile-nav-list">
+              <li class="mobile-nav-item open">
+                <a href="#">Services <span class="chev-m">▾</span></a>
+                <ul class="mobile-sub">
+                  <li><a href="#"><span class="sub-dot"></span>Software Engineering</a></li>
+                  <li><a href="#"><span class="sub-dot"></span>AI &amp; Intelligent Automation</a></li>
+                  <li><a href="#"><span class="sub-dot"></span>Cloud &amp; DevOps</a></li>
+                  <li><a href="#"><span class="sub-dot"></span>Quality Engineering</a></li>
+                  <li><a href="#"><span class="sub-dot"></span>CTO-as-a-Service</a></li>
+                  <li><a href="#"><span class="sub-dot"></span>Emerging Technologies</a></li>
+                </ul>
+              </li>
+              <li class="mobile-nav-item">
+                <a href="#">Solutions <span class="chev-m">▾</span></a>
+                <ul class="mobile-sub">
+                  <li><a href="#"><span class="sub-dot"></span>AI for Compliance &amp; Risk</a></li>
+                  <li><a href="#"><span class="sub-dot"></span>Enterprise AI Integration</a></li>
+                </ul>
+              </li>
+              <li class="mobile-nav-item">
+                <a href="#">Industries <span class="chev-m">▾</span></a>
+                <ul class="mobile-sub">
+                  <li><a href="#"><span class="sub-dot"></span>US Startups</a></li>
+                  <li><a href="#"><span class="sub-dot"></span>FinTech &amp; RegTech</a></li>
+                  <li><a href="#"><span class="sub-dot"></span>Healthcare</a></li>
+                  <li><a href="#"><span class="sub-dot"></span>SMBs</a></li>
+                  <li><a href="#"><span class="sub-dot"></span>Enterprise</a></li>
+                </ul>
+              </li>
+              <li class="mobile-nav-item"><a href="/packages">Packages</a></li>
+              <li class="mobile-nav-item"><a href="/about">About</a></li>
+            </ul>
+            <div class="mobile-cta-row">
+              <a href="https://calendly.com" class="mobile-cta-btn">📅 Book a Call</a>
+              <a href="/contact" class="mobile-contact-link">or send us a message →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /row-demo -->
+
+    <div class="note-box" style="margin-top:24px;">
+      <strong>Hamburger → X:</strong> Icon animates to an ✕ when drawer is open via CSS transform.<br>
+      <strong>Accordion:</strong> Only one section open at a time — opening a new one collapses the current.<br>
+      <strong>Bottom CTA:</strong> "Book a Call" always pinned at the bottom of the drawer above the fold.<br>
+      <strong>Breakpoint:</strong> Mobile drawer shown below <code>768px</code>; desktop mega-menu shown at <code>768px+</code>.
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 7 — PLANNED FILE STRUCTURE
+══════════════════════════════════════════════════ -->
+<div class="mockup-section" style="background: white; padding: 32px;">
+  <div class="container-demo">
+    <div class="annotation" style="padding-left:0;">PLANNED FILE STRUCTURE</div>
+    <pre style="font-size:13px; line-height:1.8; color:#333; font-family:monospace; margin-top:12px;">
+/components/
+  header.html         ← markup only (injected by loader)
+  footer.html         ← markup only (injected by loader)
+
+/assets/css/
+  lc-base.css         ← CSS reset + Google Fonts + CSS vars
+  lc-header.css       ← header + mega-menu + mobile drawer
+  lc-footer.css       ← footer styles
+  lc-utils.css        ← shared utilities (grid, spacing, etc.)
+
+/assets/js/
+  lc-components.js    ← fetches + injects header.html & footer.html
+  lc-nav.js           ← mega-menu hover, sticky, mobile accordion
+
+template.html         ← base page skeleton (loads all of the above)
+    </pre>
+    <div class="note-box">
+      <strong>Injection strategy:</strong> <code>lc-components.js</code> uses <code>fetch()</code> to load
+      <code>/components/header.html</code> and <code>/components/footer.html</code> and inserts them into
+      <code>#lc-header-mount</code> / <code>#lc-footer-mount</code> placeholder divs on each page.<br>
+      Works on GitHub Pages (no server-side includes needed).
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
