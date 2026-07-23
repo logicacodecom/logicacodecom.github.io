@@ -104,7 +104,7 @@ What a CFO-level prospect will actually notice.
 
 | Location | Finding |
 |---|---|
-| `index.html:707` | "Watch Our Video Demonstration" embeds Vimeo `60616160` — the **RED template's stock demo reel**. Anyone who presses play learns the showcase isn't yours. |
+| `index.html:707` | "Watch Our Video Demonstration" embeds Vimeo `60616160` — the **RED template's stock demo reel** (same ID appears throughout `_templates/red/`). Anyone who presses play learns the showcase isn't yours. **Deferred by owner decision (2026-07-23): keep the section live for now, replace with a real logicacode video later — do not delete.** Tracked as T4a. |
 | `index.html:791-841` | Testimonial carousel contains four **logicacode-authored aphorisms**, cited as "logicacode automation principle." Zero third-party proof. Reads as "no client will go on record." |
 | `index.html:1283-1376` | "Clients carousel" (`clients-carousel-section`) shows UiPath, Automation Anywhere, Power Automate, Azure, AWS, Python — **tools, not clients**. `title="Automation Anywhere \| RPA"` implies partnership. If not a certified partner, this is an indefensible claim. |
 | `index.html:1041-1214` | Use-case cards dated **February 01, 2021** with fabricated comment counts (0, 2, 13, 26) on posts that do not exist. Five-year-old dates signal a dead company. All five link to `#section-11`. |
@@ -187,7 +187,8 @@ Ordered by return, not by effort. Do not reorder without a reason.
 
 ### Sprint 2 — restore credibility
 
-- [ ] **T4 · P1 · Remove the fabrications.** Delete the stock Vimeo embed, the self-quoted "testimonials", the fake comment counts, and the Feb-2021 dates. Nothing false should survive this pass.
+- [ ] **T4 · P1 · Remove the fabrications.** Delete the self-quoted "testimonials", the fake comment counts, and the Feb-2021 dates. Nothing false should survive this pass. (The stock video is handled separately — see T4a.)
+- [ ] **T4a · P1 · Replace the homepage video — deferred, do not delete.** Owner decided (2026-07-23) to keep the stock Vimeo section (`index.html` section-5, `:698-734`) live rather than remove it, and to swap in a real logicacode video later. Until then the stock reel stays. *Done when:* the `data-src` on `index.html:707` points at a genuine logicacode video (e.g. from the `@logicacode` YouTube channel), or the owner decides to drop the section after all.
 - [ ] **T5 · P1 · Replace with something true.** One named client, or one anonymised-but-specific result ("a Gulf logistics operator cut invoice handling from 4 min to 40 sec"). Relabel the tech carousel from "clients" to "Technologies we work with" and drop any implied partnership claims not held.
 - [ ] **T6 · P1 · Rewrite the stat block** with defensible numbers, or cut it. Remove "Target" and "Potential" hedges — state a real figure or state nothing.
 - [ ] **T7 · P2 · Publish a privacy policy + terms** at `/privacy.html` and `/terms.html`; wire Usercentrics to them; add footer links to every live page.
