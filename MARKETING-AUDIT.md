@@ -49,10 +49,12 @@ The form has no `action` attribute. With the handler unbound, the browser perfor
 
 ### Blast radius
 
-Same crash on `services/ai-automation.html` (scripts at lines 690–698 — also missing YTPlayer). There it additionally kills:
-- both OWL carousels on the page (they render as raw stacked blocks)
-- the scroll-to-top control
-- any `.counter` animation
+Same crash on `services/ai-automation.html` (scripts at lines 690–698 — also missing YTPlayer). That page has no form and, verified in a browser, **no carousel markup** — an earlier draft of this audit wrongly claimed two carousels, having matched the `owl.carousel.min.css` and `.js` include lines rather than any `class="owl-carousel"` element. What the crash actually killed there:
+- the scroll-to-top control (`theme.js:639-646`, never bound)
+- the deferred-video loader (`theme.js:493`, `window.onload` never assigned)
+- the form placeholder/file-input helpers and the Bootstrap tooltip/popover init
+
+The lateral nav is **not** affected — its handler sits at `theme.js:71-102`, above the crash point.
 
 Only `index.html` is unaffected, because it loads the full vendor stack (`ytplayer` included, `index.html:1644`).
 
@@ -167,10 +169,10 @@ Ordered by return, not by effort. Do not reorder without a reason.
 
 ### Sprint 1 — stop the bleeding (hours, not days)
 
-- [ ] **T1 · P0 · Fix the broken contact form.**
-      Guard `assets/js/theme.js:180` with `if ($.fn.mb_YTPlayer)`. Audit the other unguarded plugin calls in the same file (magnific-popup ~348, isotope ~303, counterUp ~450, owl ~194) and guard them the same way.
-      *Done when:* submitting `/contact.html` and `/services/ai-automation.html` produces a Web3Forms success message, console is clean, and both OWL carousels on the AI page initialise.
-      *Blocks:* T2, T3, and every campaign.
+- [x] **T1 · P0 · Fix the broken contact form.** — done, branch `fix/theme-plugin-guards`
+      Guarded all eight optional plugin calls in `assets/js/theme.js` behind `$.fn` checks (`mb_YTPlayer`, `owlCarousel`, `imagesLoaded`, `isotope`, `magnificPopup`, `counterUp`, `tooltip`, `popover`) and added an easing fallback for pages without the easing plugin. Root-cause fix — no per-page vendor scripts added.
+      *Verified:* `node _tests/theme-guards.test.js` (fails against the pre-fix file with the original TypeError); headless Chrome shows `ERRORS=none` and `SUBMIT_HANDLER=BOUND` on `/contact.html` and `/index.html`, with `index.html` still initialising 4/4 carousels.
+      *Not verified:* no live submission was sent to Web3Forms — that would deliver a fake enquiry. Confirm end-to-end with one real submit before closing.
 
 - [ ] **T2 · P0 · Give the homepage real navigation.**
       Header links to Services / AI Automation / About / Contact plus a visible CTA button. Desktop nav must be visible without a click. Check the untracked `components/header.html` + `assets/css/lc-nav.css` in this working tree first — this may already be built.
