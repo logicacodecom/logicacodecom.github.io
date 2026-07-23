@@ -1,0 +1,8 @@
+exclude:
+  - _ALT/
+  - _OLD/
+  - _mockups/
+  - _templates/
+  - CLAUDE.md
+  - inner-page-template.html
+  - template.html

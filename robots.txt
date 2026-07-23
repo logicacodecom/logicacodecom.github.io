@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /_ALT/
+Disallow: /_OLD/
+Disallow: /_mockups/
+Disallow: /_templates/
+
+Sitemap: https://logicacode.com/sitemap.xml
