@@ -6,8 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Static HTML5 marketing website for **logicacode** (always lowercase — never "Logicacode" or "LogicaCode"), a company offering AI automation, RPA, digital transformation, and data science services. Hosted on **GitHub Pages** at `logicacode.com`.
 
-- No build process, no frameworks, no build tools — plain HTML5, CSS3, vanilla JavaScript only
-- Based on the **"RED" responsive template by Themetorium** (Bootstrap 3 + jQuery)
+- No mandatory build process or framework — static HTML5, CSS3, vanilla JavaScript and existing jQuery plugins
+- Based on the **"RED" responsive template by Themetorium** (shipped Bootstrap **4.6.0** + jQuery)
 - All new pages must match the existing visual identity — same CSS, same patterns, same look
 
 ## Brand Rules
@@ -36,9 +36,10 @@ Pushing to `master` deploys automatically via GitHub Pages. The `CNAME` maps to 
 /services/               ← inner pages for individual services
 /solutions/              ← solution-specific landing pages
 /industries/             ← industry-vertical pages
-/components/             ← shared header.html + footer.html (injected via JS)
-/assets/css/             ← theme.css (master), menu.css (nav), helper.css, lc-nav.css (new nav)
-/assets/js/              ← theme.js (template), lc-components.js (injector), lc-nav.js (nav behaviour)
+/_includes/              ← shared site-header.html + site-footer.html sources
+/_scripts/               ← sync-layout.py copies shared markup into the static pages
+/assets/css/             ← theme.css (template), helper.css, site.css (shared refinements)
+/assets/js/              ← theme.js (template/forms), site.js (navigation/carousel accessibility)
 /assets/img/             ← images and icons
 /assets/vendor/          ← Bootstrap 3, jQuery, FontAwesome, OWL Carousel 2, etc.
 /_OLD/                   ← archived previous site (do not modify)
@@ -46,7 +47,7 @@ Pushing to `master` deploys automatically via GitHub Pages. The `CNAME` maps to 
 /_mockups/               ← design mockups awaiting approval (not deployed)
 ```
 
-`template.html` in the root is the base skeleton for every new page — copy it, do not start from scratch.
+Use an existing current page as the base for new pages, retain the shared marker blocks, and add the page to `_scripts/sync-layout.py`. Archived templates are references, not the current page architecture.
 
 ## Visual Identity — Do Not Change
 
@@ -59,7 +60,7 @@ Pushing to `master` deploys automatically via GitHub Pages. The `CNAME` maps to 
 | Heading font | **Oswald** (Google Fonts, weights 300/400/700) |
 | Body / paragraph font | **Open Sans** (Google Fonts, weights 300/400/600/700) |
 | Icon library | **FontAwesome** (already in `/assets/vendor/fontawesome/`) |
-| Grid | Bootstrap 3 `.container` / `.row` / `.col-*` |
+| Grid | Bootstrap 4.6.0 `.container` / `.row` / `.col-*` |
 
 Do **not** introduce new color values, new fonts, or new icon libraries on any page.
 
@@ -81,19 +82,30 @@ All template classes use the `tt-*` prefix. Key patterns to reuse:
 
 ## Shared Component System
 
-Header and footer are injected into every page by `lc-components.js` — do not hard-code them:
+Header/footer sources are `_includes/site-header.html` and `_includes/site-footer.html`. They are copied into explicit marker blocks in the five marketing pages. No runtime fetch or JavaScript dependency is required to render them. After editing a shared source, run:
 
-```html
-<!-- top of <body> -->
-<div id="lc-header-mount"></div>
-
-<!-- bottom of <body>, before vendor scripts -->
-<div id="lc-footer-mount"></div>
+```sh
+python _scripts/sync-layout.py
+python _scripts/sync-layout.py --check
 ```
 
-Load order in `<head>`: `lc-nav.css` → `lc-components.js defer` → `lc-nav.js defer`
+Do not separately edit generated copies. Use root-relative URLs for links and assets. `assets/css/site.css` loads after page styles; `assets/js/site.js` progressively enhances navigation and carousel accessibility.
 
-Component markup lives in `/components/header.html` and `/components/footer.html`. Edit those files to update nav links or footer content across all pages simultaneously.
+Small-screen navigation remains visible without JavaScript. Enhanced menus have explicit expanded state and Escape dismissal. Carousels start paused; visitors can opt into playback. Preserve reduced-motion support, inactive-slide handling, and visible keyboard focus.
+
+## Verification and preview
+
+```sh
+python -m http.server 8765 --bind 127.0.0.1
+node --check assets/js/theme.js
+node --check assets/js/site.js
+node _tests/theme-guards.test.js
+python _scripts/sync-layout.py --check
+```
+
+Check desktop, tablet, and 320px/390px mobile layouts. Test keyboard navigation and pending, success, failure, and retry form states. Intercept Web3Forms requests during tests; do not send real inquiries. Automated accessibility checks do not establish full compliance.
+
+JPEG originals are retained alongside smaller WebP copies used by current pages. Keep image dimensions explicit and lazy-load below-fold images. Maintenance scripts and browser artifacts are excluded in `_config.yml`.
 
 ## Every Page Must Include
 
@@ -102,7 +114,7 @@ Component markup lives in `/components/header.html` and `/components/footer.html
 <meta name="description" content="150–160 char description">
 <meta property="og:title"       content="Page Title — logicacode">
 <meta property="og:description" content="150–160 char description">
-<meta property="og:image"       content="https://logicacode.com/assets/img/og-default.jpg">
+<meta property="og:image"       content="https://logicacode.com/assets/img/logo.png">
 <meta property="og:url"         content="https://logicacode.com/PAGE-PATH/">
 <link rel="canonical"           href="https://logicacode.com/PAGE-PATH/">
 ```
@@ -111,6 +123,6 @@ All `<img>` elements must have descriptive `alt` text.
 
 ## Key Integrations
 
-- **Contact form** — Web3Forms (`https://api.web3forms.com/submit`), AJAX in `theme.js`. Form: `#contact-form-web3`, status: `#form-status`
+- **Contact form** — Web3Forms (`https://api.web3forms.com/submit`), AJAX in `theme.js`. Form: `#contact-form-web3`, status: `#form-status`. Native POST fallback, duplicate protection, pending feedback, timeout, and recoverable errors that preserve input.
 - **Google Analytics** — GA4 ID: `G-1Z4EW6VB3V`
 - **Cookie consent** — Usercentrics, settings ID: `Wtpma_KU1m3fA0`

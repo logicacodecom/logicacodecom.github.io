@@ -5,5 +5,9 @@ exclude:
   - _templates/
   - _tests/
   - CLAUDE.md
+  - WEBSITE_ROADMAP.md
+  - CONTENT_DIGITAL_MARKETING_ASSESSMENT.md
   - inner-page-template.html
   - template.html
+  - _scripts/
+  - .playwright-mcp/
