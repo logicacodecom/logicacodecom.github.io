@@ -28,7 +28,14 @@ The business confirmed that the metrics, company counters, AML quote, and SOC 2 
 - Normalized page titles to "Page Title — logicacode" and removed the legacy `keywords` tag.
 - Aligned both contact forms to the four services, added an Enterprise Architecture option, and replaced the "free consultation" wording.
 
-Still open: the Enterprise Architecture page (mockup first), case studies, named people, privacy and terms, a branded share image, and structured data.
+Then, in a second pass:
+
+- Published `/services/enterprise-architecture.html` from an approved mockup, positioning architecture as an AI- and automation-powered service.
+- Added Enterprise Architecture to the navigation, footer, Services page, sitemap, and homepage service routes.
+- Reworked the Services page as four services on one engine, each with a line on how AI and automation support delivery.
+- Added Organization structured data to the homepage using verified facts only.
+
+Still open, and needing the business rather than the site: case studies, named people, privacy and terms pages, a branded share image, and the engagement specifics (stage durations, consultation length, response time) that were deliberately left off the new page.
 
 ## Executive judgment
 
