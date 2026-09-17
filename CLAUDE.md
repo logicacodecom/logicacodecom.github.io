@@ -91,7 +91,7 @@ python _scripts/sync-layout.py --check
 
 Do not separately edit generated copies. Use root-relative URLs for links and assets. `assets/css/site.css` loads after page styles; `assets/js/site.js` progressively enhances navigation and carousel accessibility.
 
-Small-screen navigation remains visible without JavaScript. Enhanced menus have explicit expanded state and Escape dismissal. Carousels start paused; visitors can opt into playback. Preserve reduced-motion support, inactive-slide handling, and visible keyboard focus.
+Small-screen navigation remains visible without JavaScript. Enhanced menus have explicit expanded state and Escape dismissal. Carousels do not autoplay and have no play/pause control; visitors advance slides with the arrows and dots. Preserve reduced-motion support, inactive-slide handling, and visible keyboard focus.
 
 ## Verification and preview
 

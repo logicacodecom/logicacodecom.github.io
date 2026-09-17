@@ -70,8 +70,6 @@ body :is(a, button, input, select, textarea, [tabindex]):focus-visible {
 .lc-form-note { margin: 12px 0; font-size: 14px; }
 #form-status { min-height: 1.6em; font-family: 'Open Sans', sans-serif; }
 .contact-section .text-gray { color: var(--lc-white) !important; }
-.lc-carousel-controls { display: flex; justify-content: center; padding: 12px; background: var(--lc-dark); }
-.lc-carousel-toggle { min-height: 44px; padding: 8px 18px; border: 1px solid var(--lc-white); color: var(--lc-white); background: var(--lc-dark); font: 14px 'Open Sans', sans-serif; cursor: pointer; }
 .owl-carousel .owl-dot { min-width: 44px; min-height: 44px; }
 .owl-carousel .owl-nav button { min-width: 44px; min-height: 44px; }
 body:not(.is-mobile) .owl-carousel.nav-hover .owl-nav { opacity: 1; visibility: visible; }

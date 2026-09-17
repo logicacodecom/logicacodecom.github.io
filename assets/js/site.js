@@ -43,16 +43,12 @@
   var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('.owl-carousel').forEach(function (carousel, index) {
     var $carousel = $(carousel);
-    var toggleMotion;
-    var playing = false;
     carousel.id = carousel.id || 'lc-carousel-' + (index + 1);
     carousel.setAttribute('role', 'region');
     carousel.setAttribute('aria-roledescription', 'carousel');
     carousel.setAttribute('aria-label', carousel.dataset.label || 'Featured content ' + (index + 1));
     function pause() {
-      playing = false;
       $carousel.trigger('stop.owl.autoplay');
-      if (toggleMotion) toggleMotion.textContent = 'Play slides';
     }
     function updateAccessibility() {
       carousel.querySelectorAll('.owl-item').forEach(function (item) {
@@ -71,23 +67,6 @@
           button.removeAttribute('role');
         }
       });
-      if (!toggleMotion && carousel.dataset.motionControls === 'true') {
-        var controls = document.createElement('div');
-        controls.className = 'lc-carousel-controls';
-        toggleMotion = document.createElement('button');
-        toggleMotion.type = 'button';
-        toggleMotion.className = 'lc-carousel-toggle';
-        toggleMotion.textContent = 'Play slides';
-        toggleMotion.setAttribute('aria-controls', carousel.id);
-        toggleMotion.addEventListener('click', function () {
-          if (playing) { pause(); return; }
-          playing = true;
-          toggleMotion.textContent = 'Pause slides';
-          $carousel.trigger('play.owl.autoplay', [Number(carousel.dataset.autoplayTimeout) || 8000]);
-        });
-        controls.appendChild(toggleMotion);
-        carousel.after(controls);
-      }
     }
     $carousel.on('initialized.owl.carousel translated.owl.carousel refreshed.owl.carousel', function () {
       // Owl creates its navigation in its own event handlers; label it afterward.
