@@ -35,6 +35,7 @@
 
 (function ($) {
 	'use strict';
+	var motionPreference = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
 
 
 
@@ -132,6 +133,7 @@
 
 		// Parallax scrolling effect (transform) 
 		$(window).on("scroll",function() {
+			if (motionPreference.matches) return;
 			var plxScroll = $(this).scrollTop();
 
 			$('.parallax-1').css('transform', 'translate3d(0, '+ ((plxScroll * 0.1)) +'px, 0)');
@@ -146,6 +148,7 @@
 
 		// Element fade out scrolling effect
 		$(window).on("scroll",function() {
+			if (motionPreference.matches) return;
 			$(".fade-out-scroll-1").css("opacity", 1 - $(window).scrollTop() / 150);
 			$(".fade-out-scroll-2").css("opacity", 1 - $(window).scrollTop() / 250);
 			$(".fade-out-scroll-3").css("opacity", 1 - $(window).scrollTop() / 350);
@@ -168,9 +171,11 @@
 
 	$('.page-scroll').bind('click', function(event) {
 		var $anchor = $(this);
+		var target = document.getElementById(($anchor.attr('href') || '').slice(1));
+		if (!target) return;
 		$('html, body').stop().animate({
-			scrollTop: $($anchor.attr('href')).offset().top -14
-		}, 1500, scrollEasing);
+			scrollTop: $(target).offset().top - 14
+		}, motionPreference.matches ? 0 : 500, scrollEasing);
 		event.preventDefault();
 	});
 
@@ -194,7 +199,7 @@
 	// Note: "animate.css" library is required: https://daneden.github.io/animate.css/
 	// =====================================================
 
-	$(window).on('load', function() {
+	$(document).ready(function() {
 
 		if (!$.fn.owlCarousel) { return; }
 
@@ -206,15 +211,16 @@
 				loop: $carousel.data("loop"),
 				margin: $carousel.data("margin"),
 				startPosition: $carousel.data("start-position"),
-				animateIn: $carousel.data("animate-in"),
-				animateOut: $carousel.data("animate-out"),
+				animateIn: motionPreference.matches ? false : $carousel.data("animate-in"),
+				animateOut: motionPreference.matches ? false : $carousel.data("animate-out"),
 				autoHeight: $carousel.data("autoheight"),
-				autoplay: $carousel.data("autoplay"),
+				autoplay: false, // Visitors explicitly opt into motion with the shared play control.
 				autoplayTimeout: $carousel.data("autoplay-timeout"),
 				autoplayHoverPause: $carousel.data("autoplay-hover-pause"),
 				autoplaySpeed: $carousel.data("autoplay-speed"),
 				nav: $carousel.data("nav"),
-				navText: ['', ''],
+				navElement: 'button type="button"',
+				navText: ['<span class="sr-only">Previous slides</span>', '<span class="sr-only">Next slides</span>'],
 				navSpeed: $carousel.data("nav-speed"),
 				dots: $carousel.data("dots"),
 				dotsSpeed: $carousel.data("dots-speed"),
@@ -259,18 +265,6 @@
 			e.preventDefault();
 		});
 		
-
-		// Keyboard (prev/next arrow) events for navigating
-		// https://github.com/OwlCarousel2/OwlCarousel2/issues/492#issuecomment-55629470
-		var owlKeyboard = $('.owl-carousel');
-		$(document).keyup(function(i){
-			if(i.keyCode==37) {
-				owlKeyboard.trigger('prev.owl', [800]);
-			} else if (i.keyCode==39) {
-				owlKeyboard.trigger('next.owl', [800]);
-			}
-		});
-
 
 		// Add owl lazy loader to ".owl-lazy" element (for background images only!).
 		// ===========================================
@@ -462,7 +456,7 @@
 	// Counter-Up (requires jQuery waypoints.js plugin): https://github.com/bfintal/Counter-Up
 	// ========================================================================================
 
-	if ($.fn.counterUp) {
+	if ($.fn.counterUp && !motionPreference.matches) {
 		$('.counter').counterUp({
 			delay: 10,
 			time: 2000
@@ -597,27 +591,39 @@
 
 	$(document).ready(function () {
 		$("#contact-form-web3").on("submit", function (e) {
-			e.preventDefault(); // prevent default redirect
-
+			e.preventDefault();
 			var $form = $(this);
+			if ($form.data('submitting')) return;
+			if (!this.checkValidity()) { this.reportValidity(); return; }
 			var $status = $("#form-status");
-
+			var $button = $form.find('button[type="submit"]');
+			var originalLabel = $button.text();
+			$form.data('submitting', true);
+			$button.prop('disabled', true).attr('aria-busy', 'true').text('Sending…');
+			$status.text('Sending your message…');
 			$.ajax({
-			url: "https://api.web3forms.com/submit",
-			method: "POST",
-			data: $form.serialize(), // send form fields
-			dataType: "json",
-			success: function (result) {
-				if (result.success) {
-				$status.text("✅ Message sent successfully!");
-				$form.trigger("reset"); // clear form
-				} else {
-				$status.text("❌ Error: " + result.message);
+				url: $form.attr('action'),
+				method: 'POST',
+				data: $form.serialize(),
+				dataType: 'json',
+				timeout: 20000,
+				success: function (result) {
+					if (result && result.success === true) {
+						$form.trigger('reset');
+						$status.text('Message sent. We will review your inquiry and follow up with the next step.');
+					} else {
+						$status.text('Your message was not accepted. Please check your details and try again, or email info@logicacode.com.');
+					}
+				},
+				error: function (xhr, reason) {
+					$status.text(reason === 'timeout'
+						? 'The request timed out and delivery could not be confirmed. Your message is still here. Try again or email info@logicacode.com.'
+						: 'We could not confirm delivery. Your message is still here. Check your connection and try again, or email info@logicacode.com.');
+				},
+				complete: function () {
+					$form.data('submitting', false);
+					$button.prop('disabled', false).attr('aria-busy', 'false').text(originalLabel);
 				}
-			},
-			error: function () {
-				$status.text("⚠️ Network error, please try again.");
-			}
 			});
 		});
 	});
@@ -644,7 +650,7 @@
 
 	// Click event to scroll to top
 	$('.scrolltotop').on('click', function () {
-		$('html, body').animate({scrollTop : 0}, 1500, scrollEasing);
+		$('html, body').animate({scrollTop : 0}, motionPreference.matches ? 0 : 500, scrollEasing);
 		return false;
 	});
 
