@@ -82,7 +82,7 @@ body :is(a, button, input, select, textarea, [tabindex]):focus-visible {
 .lc-hero { padding-top: 150px !important; }
 @media (max-width: 991px) {
   /* As on the original: no header band, just the logo and the white trigger. */
-  .lc-site-header { background: none; align-items: flex-start; padding-top: 14px; }
+  .lc-site-header { background: none; padding-top: 14px; }
   .lc-site-logo { max-width: 200px; }
   .lc-hero { padding-top: 150px !important; }
 }
