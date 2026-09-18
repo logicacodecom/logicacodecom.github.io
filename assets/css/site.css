@@ -23,31 +23,43 @@ body :is(a, button, input, select, textarea, [tabindex]):focus-visible {
   transform: translateY(-160%);
 }
 .lc-skip-link:focus { transform: none; }
+/* The header floats over the hero so the intro keeps its full height. */
 .lc-site-header {
-  position: relative;
-  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 24px clamp(15px, 3vw, 48px);
-  background: var(--lc-white);
-  border-bottom: 1px solid var(--lc-dark);
+  padding: 22px clamp(15px, 3vw, 48px);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .72), rgba(0, 0, 0, 0));
 }
-.lc-site-logo { flex-shrink: 1; min-width: 0; max-width: 310px; }
+.lc-site-logo { flex-shrink: 1; min-width: 0; max-width: 300px; }
 .lc-site-logo img { display: block; width: 100%; height: auto; }
 .lc-primary-nav { display: flex; align-items: center; gap: 8px 20px; flex-wrap: wrap; }
 .lc-primary-nav a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  color: var(--lc-dark);
+  color: var(--lc-white);
   font-family: 'Oswald', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .6);
 }
+.lc-primary-nav a:hover, .lc-primary-nav a:focus { color: var(--lc-red); }
 .lc-primary-nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--lc-red); text-underline-offset: 7px; text-decoration-thickness: 3px; }
-.lc-menu-toggle { border: 2px solid var(--lc-dark); background: var(--lc-white); color: var(--lc-dark); min-height: 44px; padding: 8px 14px; font: inherit; cursor: pointer; }
+.lc-menu-toggle { border: 2px solid var(--lc-white); background: rgba(0, 0, 0, .45); color: var(--lc-white); min-height: 44px; padding: 8px 14px; font: inherit; cursor: pointer; }
+/* Inner-page heroes sit under the floating header, so they need the clearance. */
+.lc-hero { padding-top: 150px !important; }
+@media (max-width: 991px) {
+  .lc-site-header { background: rgba(24, 24, 24, .92); }
+  .lc-site-logo { max-width: 190px; }
+  .lc-hero { padding-top: 170px !important; }
+}
 .lc-site-footer { padding: 64px 0 24px; }
 .lc-footer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
 .lc-site-footer h2 { font-size: 20px; color: var(--lc-white); margin-bottom: 18px; }
@@ -58,12 +70,6 @@ body :is(a, button, input, select, textarea, [tabindex]):focus-visible {
 .btn[disabled] { cursor: wait; }
 .btn-primary, .btn-primary:hover, .btn-primary:focus { color: var(--lc-white); font-size: 19px; font-weight: 700; }
 .lc-service > a, .lc-contact-details a { color: var(--lc-dark); text-decoration: underline; text-decoration-color: var(--lc-red); text-underline-offset: 4px; }
-.intro-slider .intro-slide-item { display: flex; align-items: flex-end; min-height: clamp(520px, 72vh, 760px); }
-.intro-slider .intro-image-wrap { position: absolute; inset: 0; }
-.intro-slider .cc-item .intro-image.cc-image.bg-image { height: 100%; min-height: 100%; padding: 0; }
-.intro-slider .intro-caption { position: relative; left: auto; bottom: auto; width: 100%; max-width: 1150px; padding: 160px 80px 100px; }
-.intro-caption-title { font-family: 'Oswald', sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1.2; }
-#section-intro .scroll-down-arrow { display: none; }
 .tt-accordion-item-queue { color: var(--lc-text); }
 .bgi-category, .bgi-category:hover, #section-9 .heading-md > p { color: #000 !important; }
 .accel-card .price-note { color: var(--lc-text); }
@@ -72,7 +78,8 @@ body :is(a, button, input, select, textarea, [tabindex]):focus-visible {
 .contact-section .text-gray { color: var(--lc-white) !important; }
 .owl-carousel .owl-dot { min-width: 44px; min-height: 44px; }
 .owl-carousel .owl-nav button { min-width: 44px; min-height: 44px; }
-body:not(.is-mobile) .owl-carousel.nav-hover .owl-nav { opacity: 1; visibility: visible; }
+/* Original look: arrows fade in on hover. Keyboard focus reveals them too. */
+body:not(.is-mobile) .owl-carousel.nav-hover:focus-within .owl-nav { opacity: 1; visibility: visible; }
 .owl-carousel:not(.owl-loaded) { display: block; }
 .owl-carousel:not(.owl-loaded) > .cc-item:not(:first-child) { display: none; }
 .counter-up-inner .lc-counter-label { margin: 10px 0; font: 24px/1.2 'Oswald', sans-serif; }
