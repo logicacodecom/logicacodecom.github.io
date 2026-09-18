@@ -4,7 +4,7 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = ["index.html", "services.html", "about-us.html", "contact.html", "services/ai-automation.html"]
+PAGES = ["index.html", "services.html", "about-us.html", "contact.html", "services/ai-automation.html", "services/enterprise-architecture.html"]
 parser = argparse.ArgumentParser()
 parser.add_argument("--check", action="store_true", help="Fail if shared markup needs syncing")
 args = parser.parse_args()
