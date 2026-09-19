@@ -1,0 +1,78 @@
+/* MOCKUP ONLY: new header dropdowns + page helpers for the rebuild. Loads after site.css. */
+
+/* Banner marking the page as a mockup */
+.mk-banner { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); max-width: calc(100% - 48px); z-index: 2000; border-radius: 3px; box-shadow: 0 6px 18px rgba(0,0,0,.3); padding: 8px 16px; background: var(--lc-red); color: var(--lc-white); font: 14px/1.4 'Oswald', sans-serif; letter-spacing: .05em; text-align: center; text-transform: uppercase; }
+.mk-banner a { color: var(--lc-white); text-decoration: underline; }
+.mk-note { display: inline-block; margin-bottom: 8px; padding: 2px 8px; border: 1px dashed var(--lc-red); color: var(--lc-red); font: 11px/1.6 'Oswald', sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+
+/* ── Header: top-level dropdown triggers ─────────────────────────── */
+.lc-nav-item { position: static; }
+.lc-nav-trigger {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0;
+  border: 0; background: none; color: var(--lc-white); cursor: pointer;
+  font: 16px 'Oswald', sans-serif; text-transform: uppercase; text-shadow: 0 1px 3px rgba(0, 0, 0, .6);
+}
+.lc-nav-trigger i { font-size: 11px; transition: transform .2s; }
+.lc-nav-trigger:hover, .lc-nav-trigger:focus, .lc-nav-trigger[aria-expanded="true"] { color: var(--lc-red); }
+.lc-nav-trigger[aria-expanded="true"] i { transform: rotate(180deg); }
+
+/* ── Dropdown panel (full-width mega panel on desktop) ───────────── */
+.lc-mega {
+  position: absolute; left: clamp(15px, 3vw, 48px); right: clamp(15px, 3vw, 48px); top: 100%;
+  padding: 36px 40px 32px; background: var(--lc-dark); border-top: 3px solid var(--lc-red);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, .45); text-align: left;
+}
+.lc-mega-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 40px; }
+.lc-mega-grid.lc-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.lc-mega h3 { margin: 0 0 10px; font: 17px/1.3 'Oswald', sans-serif; text-transform: uppercase; }
+.lc-mega h3 a { color: var(--lc-white); }
+.lc-mega h3 a:hover, .lc-mega h3 a:focus { color: var(--lc-red); }
+.lc-primary-nav .lc-mega a {
+  display: block; min-height: 0; padding: 5px 0; text-transform: none; text-shadow: none;
+  color: rgba(255, 255, 255, .72); font: 14px/1.45 'Open Sans', sans-serif;
+}
+.lc-primary-nav .lc-mega h3 a { font: 17px/1.3 'Oswald', sans-serif; text-transform: uppercase; color: var(--lc-white); padding: 0; }
+.lc-primary-nav .lc-mega a:hover, .lc-primary-nav .lc-mega a:focus { color: var(--lc-red); }
+/* site.js marks same-page links (incl. "#" placeholders) current; only the category heading should show it. */
+.lc-primary-nav .lc-mega a[aria-current] { text-decoration: none; }
+.lc-mega-foot { margin-top: 26px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .15); }
+.lc-primary-nav .lc-mega .lc-mega-foot a { display: inline-block; color: var(--lc-white); font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: .04em; }
+.lc-mega-foot a i { margin-left: 6px; color: var(--lc-red); }
+
+/* Industries: icon list */
+.lc-mega-icons { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px 32px; }
+.lc-primary-nav .lc-mega-icons a { display: flex; align-items: center; gap: 12px; padding: 9px 0; color: var(--lc-white); }
+.lc-mega-icons i { width: 20px; color: var(--lc-red); text-align: center; }
+
+/* Innovations: product cards */
+.lc-primary-nav .lc-mega .lc-product { display: block; height: 100%; padding: 22px; border: 1px solid rgba(255, 255, 255, .15); }
+.lc-primary-nav .lc-mega .lc-product:hover, .lc-primary-nav .lc-mega .lc-product:focus { border-color: var(--lc-red); }
+.lc-product strong { display: block; margin-bottom: 4px; color: var(--lc-white); font: 20px 'Oswald', sans-serif; text-transform: uppercase; }
+.lc-product em { display: block; margin-bottom: 8px; color: var(--lc-red); font-style: normal; font-size: 13px; }
+
+/* Company: small dropdown, not full width */
+.lc-nav-item.lc-small { position: relative; }
+.lc-small .lc-mega { left: auto; right: 0; width: 240px; padding: 14px 24px; }
+
+@media (max-width: 900px) {
+    .lc-nav-trigger { width: 100%; justify-content: space-between; padding: 10px 16px; }
+  .lc-mega, .lc-small .lc-mega { position: static; width: auto; padding: 4px 16px 16px 28px; border-top: 0; box-shadow: none; background: none; }
+  .lc-mega-grid, .lc-mega-grid.lc-cols-2, .lc-mega-icons { grid-template-columns: 1fr; gap: 10px; }
+  .lc-mega-foot { margin-top: 10px; padding-top: 10px; }
+  .lc-primary-nav .lc-mega .lc-product { padding: 12px 14px; }
+}
+
+/* ── Page helpers ────────────────────────────────────────────────── */
+.lc-anchor-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.lc-anchor-nav a { padding: 7px 18px; border: 1px solid #ccc; border-radius: 30px; color: var(--lc-dark); font: 13px 'Oswald', sans-serif; letter-spacing: .04em; text-transform: uppercase; }
+.lc-anchor-nav a:hover, .lc-anchor-nav a:focus { border-color: var(--lc-red); color: var(--lc-red); }
+.lc-anchor-nav a i { margin-right: 6px; color: var(--lc-red); }
+.lc-feature-list { padding: 0; list-style: none; }
+.lc-feature-list li { position: relative; margin-bottom: 12px; padding-left: 28px; color: var(--lc-text); font: 15px/1.6 'Open Sans', sans-serif; }
+.lc-feature-list li i { position: absolute; left: 0; top: 4px; color: var(--lc-red); }
+.bg-dark .lc-feature-list li { color: rgba(255, 255, 255, .8); }
+.lc-industry { padding: 56px 0; border-bottom: 1px solid #e5e5e5; scroll-margin-top: 24px; }
+.lc-industry-icon { display: flex; align-items: center; justify-content: center; width: 84px; height: 84px; border-radius: 50%; background: var(--lc-red); color: var(--lc-white); font-size: 34px; }
+.lc-stat { font: 700 56px/1 'Oswald', sans-serif; color: var(--lc-red); }
+.lc-stat-label { margin-top: 8px; color: rgba(255, 255, 255, .8); font: 16px 'Oswald', sans-serif; text-transform: uppercase; }
+@media (max-width: 767px) { .lc-industry-icon { margin-bottom: 20px; } }
