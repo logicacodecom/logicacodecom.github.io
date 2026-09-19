@@ -33,9 +33,42 @@
     });
     mobile.addEventListener('change', syncMenu);
     nav.querySelectorAll('a').forEach(function (link) {
-      if (link.pathname === window.location.pathname) link.setAttribute('aria-current', 'page');
+      // Jump links (#section) share the page's path but are not the page itself.
+      if (link.pathname === window.location.pathname && !link.hash) link.setAttribute('aria-current', 'page');
     });
     syncMenu();
+  }
+
+  // Dropdown menus: disclosure buttons. Panels are visible lists until this runs.
+  var triggers = document.querySelectorAll('.lc-nav-trigger');
+  if (nav && triggers.length) {
+    function setOpen(trigger, open) {
+      trigger.setAttribute('aria-expanded', String(open));
+      document.getElementById(trigger.getAttribute('aria-controls')).hidden = !open;
+    }
+    function closeAll(except) {
+      triggers.forEach(function (t) { if (t !== except) setOpen(t, false); });
+    }
+    triggers.forEach(function (trigger) {
+      setOpen(trigger, false);
+      trigger.addEventListener('click', function () {
+        var open = trigger.getAttribute('aria-expanded') !== 'true';
+        closeAll(trigger);
+        setOpen(trigger, open);
+      });
+    });
+    nav.classList.add('lc-nav-enhanced');
+    // Capture phase: Escape closes an open panel before it closes the small-screen menu.
+    document.addEventListener('keydown', function (event) {
+      var open = event.key === 'Escape' && nav.querySelector('.lc-nav-trigger[aria-expanded="true"]');
+      if (!open) return;
+      setOpen(open, false);
+      open.focus();
+      event.stopImmediatePropagation();
+    }, true);
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.lc-nav-item') || event.target.closest('.lc-mega a')) closeAll();
+    });
   }
 
   var $ = window.jQuery;

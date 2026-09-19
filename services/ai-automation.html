@@ -77,7 +77,7 @@
 		}
 	</style>
 
-	<link rel="stylesheet" href="/assets/css/site.css">
+	<link rel="stylesheet" href="/assets/css/site.css?v=20260919e">
 </head>
 
 <body>
@@ -102,11 +102,125 @@
   <button class="lc-menu-toggle" type="button" aria-expanded="false" aria-controls="lc-primary-nav" hidden>Menu</button>
   <nav id="lc-primary-nav" class="lc-primary-nav" aria-label="Primary navigation">
     <a href="/">Home</a>
-    <a href="/services.html">Services</a>
-    <a href="/services/enterprise-architecture.html">Enterprise Architecture</a>
-    <a href="/services/ai-automation.html">AI Automation</a>
-    <a href="/about-us.html">About</a>
-    <a href="/contact.html">Contact</a>
+    <div class="lc-nav-item">
+      <button class="lc-nav-trigger" type="button" aria-expanded="false" aria-controls="lc-menu-services">Services <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+      <div id="lc-menu-services" class="lc-mega">
+        <div class="lc-mega-intro">
+          <p class="lc-mega-title">Services</p>
+          <p>End-to-end technology services, from strategy to managed operations.</p>
+          <a class="lc-mega-cta" href="/services.html">All services <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="lc-mega-grid">
+          <div>
+            <p class="lc-mega-heading"><a href="/services/automation.html">Automation</a></p>
+            <a href="/services/automation.html#agentic-workflows">Agentic Workflows</a>
+            <a href="/services/automation.html#intelligent-automation">Intelligent Automation</a>
+            <a href="/services/automation.html#rpa-genai">RPA + GenAI</a>
+            <a href="/services/automation.html#mcp-architectures">MCP Architectures</a>
+          </div>
+          <div>
+            <p class="lc-mega-heading"><a href="/services/cloud.html">Cloud</a></p>
+            <a href="/services/cloud.html#assessment-roadmap">Assessment &amp; Roadmap</a>
+            <a href="/services/cloud.html#managed-intelligent-cloud">Managed Intelligent Cloud</a>
+            <a href="/services/cloud.html#sre-aiops">SRE, AIOps &amp; Managed Services</a>
+            <a href="/services/cloud.html#devops-mlops">DevOps &amp; MLOps</a>
+          </div>
+          <div>
+            <p class="lc-mega-heading"><a href="/services/data-ai.html">Data &amp; AI</a></p>
+            <a href="/services/data-ai.html#analytics-platform">AI-Driven Analytics</a>
+            <a href="/services/data-ai.html#predictive-analytics">Predictive &amp; Prescriptive Analytics</a>
+            <a href="/services/data-ai.html#business-intelligence">Business Intelligence</a>
+            <a href="/services/data-ai.html#data-engineering">Data Engineering</a>
+          </div>
+          <div>
+            <p class="lc-mega-heading"><a href="/services/product-engineering.html">Product Engineering</a></p>
+            <a href="/services/product-engineering.html#digital-experience">Digital Experience Platforms</a>
+            <a href="/services/product-engineering.html#product-design">AI-Augmented Product Design</a>
+            <a href="/services/product-engineering.html#genai-engineering">GenAI Product Engineering</a>
+            <a href="/services/product-engineering.html#testing-qa">AI-Powered Testing &amp; QA</a>
+          </div>
+          <div>
+            <p class="lc-mega-heading"><a href="/services/professional-services.html">Professional Services</a></p>
+            <a href="/services/professional-services.html#platforms">Platform Specialists</a>
+            <a href="/services/professional-services.html#technologies">Technology Specialists</a>
+          </div>
+          <div>
+            <p class="lc-mega-heading"><a href="/services/advisory-consulting.html">Advisory &amp; Consulting</a></p>
+            <a href="/services/advisory-consulting.html#cto-as-a-service">CTO as a Service</a>
+            <a href="/services/enterprise-architecture.html">Enterprise Architect</a>
+            <a href="/services/advisory-consulting.html#business-process-re-engineering">Business Process Re-Engineering</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lc-nav-item">
+      <button class="lc-nav-trigger" type="button" aria-expanded="false" aria-controls="lc-menu-industries">Industries <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+      <div id="lc-menu-industries" class="lc-mega">
+        <div class="lc-mega-intro">
+          <p class="lc-mega-title">Industries</p>
+          <p>Industry knowledge, built into every solution.</p>
+          <a class="lc-mega-cta" href="/industries/">All industries <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="lc-mega-list">
+          <a class="lc-mega-item" href="/industries/#consumer-retail"><span class="lc-mega-icon"><i class="fas fa-shopping-cart" aria-hidden="true"></i></span><span><strong>Consumer &amp; Retail</strong><small>Faster growth, lasting loyalty</small></span></a>
+          <a class="lc-mega-item" href="/industries/#ict"><span class="lc-mega-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></span><span><strong>ICT</strong><small>Information &amp; communication technology</small></span></a>
+          <a class="lc-mega-item" href="/industries/#banking-insurance"><span class="lc-mega-icon"><i class="fas fa-university" aria-hidden="true"></i></span><span><strong>Banking &amp; Insurance</strong><small>Risk, compliance and service</small></span></a>
+          <a class="lc-mega-item" href="/industries/#healthcare"><span class="lc-mega-icon"><i class="fas fa-heartbeat" aria-hidden="true"></i></span><span><strong>Healthcare</strong><small>For providers and payers</small></span></a>
+          <a class="lc-mega-item" href="/industries/#public-sector"><span class="lc-mega-icon"><i class="fas fa-landmark" aria-hidden="true"></i></span><span><strong>Public Sector</strong><small>Better citizen services</small></span></a>
+          <a class="lc-mega-item" href="/industries/#shipping-logistics"><span class="lc-mega-icon"><i class="fas fa-shipping-fast" aria-hidden="true"></i></span><span><strong>Shipping &amp; Logistics</strong><small>Speed, accuracy, lower cost</small></span></a>
+          <a class="lc-mega-item" href="/industries/#transportation"><span class="lc-mega-icon"><i class="fas fa-plane" aria-hidden="true"></i></span><span><strong>Transportation</strong><small>Passenger experience at scale</small></span></a>
+          <a class="lc-mega-item" href="/industries/#utilities"><span class="lc-mega-icon"><i class="fas fa-bolt" aria-hidden="true"></i></span><span><strong>Utilities</strong><small>Digital utility operations</small></span></a>
+          <a class="lc-mega-item" href="/industries/#oil-gas"><span class="lc-mega-icon"><i class="fas fa-oil-can" aria-hidden="true"></i></span><span><strong>Oil &amp; Gas</strong><small>Safer operations, less downtime</small></span></a>
+          <a class="lc-mega-item" href="/industries/#startups"><span class="lc-mega-icon"><i class="fas fa-rocket" aria-hidden="true"></i></span><span><strong>Startups</strong><small>From MVP to scale, with CTO support</small></span></a>
+        </div>
+      </div>
+    </div>
+    <div class="lc-nav-item">
+      <button class="lc-nav-trigger" type="button" aria-expanded="false" aria-controls="lc-menu-innovations">Innovations <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+      <div id="lc-menu-innovations" class="lc-mega">
+        <div class="lc-mega-intro">
+          <p class="lc-mega-title">Innovations</p>
+          <p>Products we build and run for newsrooms, service networks and libraries.</p>
+          <a class="lc-mega-cta" href="/contact.html">Request a demo <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="lc-mega-grid">
+          <a class="lc-product" href="/innovations/newsroom247.html"><strong>Newsroom247</strong><em>AI-native editorial operating system</em>Plan faster. Collaborate better. Publish smarter.</a>
+          <a class="lc-product" href="/innovations/cluexp.html"><strong>ClueXP</strong><em>Urgent local service dispatch</em>One request. One accountable handoff.</a>
+          <a class="lc-product" href="/innovations/sesat.html"><strong>SESAT</strong><em>Advanced library management system</em>Smart MARC 21 cataloguing, used in 365 UAE schools.</a>
+        </div>
+      </div>
+    </div>
+    <div class="lc-nav-item">
+      <button class="lc-nav-trigger" type="button" aria-expanded="false" aria-controls="lc-menu-company">Company <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+      <div id="lc-menu-company" class="lc-mega">
+        <div class="lc-mega-intro">
+          <p class="lc-mega-title">Company</p>
+          <p>A focused team turning operational complexity into reliable software, data and automation.</p>
+          <a class="lc-mega-cta" href="/contact.html">Talk to us <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="lc-mega-grid">
+          <a class="lc-mega-card" href="/about-us.html">
+            <span class="lc-mega-icon"><i class="fas fa-users" aria-hidden="true"></i></span>
+            <strong>About logicacode</strong>
+            <span class="lc-mega-desc">Who we are, how we work and the principles behind every project.</span>
+            <span class="lc-mega-more">Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+          </a>
+          <a class="lc-mega-card" href="/careers.html">
+            <span class="lc-mega-icon"><i class="fas fa-briefcase" aria-hidden="true"></i></span>
+            <strong>Careers</strong>
+            <span class="lc-mega-desc">Join a team building AI, automation, cloud and data solutions.</span>
+            <span class="lc-mega-more">View careers <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+          </a>
+          <div class="lc-mega-card lc-mega-card-static">
+            <span class="lc-mega-icon"><i class="fas fa-comments" aria-hidden="true"></i></span>
+            <strong>Get in Touch</strong>
+            <a href="mailto:info@logicacode.com"><i class="fas fa-envelope" aria-hidden="true"></i>info@logicacode.com</a>
+            <a href="tel:+19546622972"><i class="fas fa-phone" aria-hidden="true"></i>+1 (954) 662-2972</a>
+            <a class="lc-mega-more" href="/contact.html">Contact form <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
   </nav>
 </header>
 <!-- shared:header:end -->
@@ -514,15 +628,17 @@
       <div>
         <h2>Company</h2>
         <a href="/about-us.html">About logicacode</a>
-        <a href="/#section-8">Our methodology</a>
+        <a href="/careers.html">Careers</a>
         <a href="/contact.html">Contact us</a>
       </div>
       <div>
         <h2>Services</h2>
-        <a href="/services/enterprise-architecture.html">Enterprise Architecture</a>
-        <a href="/services/ai-automation.html">AI &amp; Intelligent Automation</a>
-        <a href="/services.html#software-engineering">Software Engineering</a>
-        <a href="/services.html#data-cloud">Data &amp; Cloud Modernization</a>
+        <a href="/services/automation.html">Automation</a>
+        <a href="/services/cloud.html">Cloud</a>
+        <a href="/services/data-ai.html">Data &amp; AI</a>
+        <a href="/services/product-engineering.html">Product Engineering</a>
+        <a href="/services/professional-services.html">Professional Services</a>
+        <a href="/services/advisory-consulting.html">Advisory &amp; Consulting</a>
       </div>
       <div>
         <h2>Connect</h2>
@@ -562,7 +678,7 @@
 	<!-- Template JS -->
 	<script src="/assets/js/theme.js"></script>
 
-	<script src="/assets/js/site.js"></script>
+	<script src="/assets/js/site.js?v=20260919e"></script>
 </body>
 
 </html>

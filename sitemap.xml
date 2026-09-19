@@ -24,4 +24,48 @@
     <loc>https://logicacode.com/contact.html</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://logicacode.com/services/automation.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://logicacode.com/services/cloud.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://logicacode.com/services/data-ai.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://logicacode.com/services/product-engineering.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://logicacode.com/services/professional-services.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://logicacode.com/services/advisory-consulting.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://logicacode.com/industries/</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://logicacode.com/innovations/newsroom247.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://logicacode.com/innovations/cluexp.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://logicacode.com/innovations/sesat.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://logicacode.com/careers.html</loc>
+    <priority>0.5</priority>
+  </url>
 </urlset>

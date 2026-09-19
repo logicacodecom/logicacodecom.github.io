@@ -35,7 +35,8 @@ Pushing to `master` deploys automatically via GitHub Pages. The `CNAME` maps to 
 /                        ← root HTML pages (index.html, contact.html, about-us.html, etc.)
 /services/               ← inner pages for individual services
 /solutions/              ← solution-specific landing pages
-/industries/             ← industry-vertical pages
+/industries/             ← industries page (one section per industry)
+/innovations/            ← product pages (Newsroom247, ClueXP, SESAT)
 /_includes/              ← shared site-header.html + site-footer.html sources
 /_scripts/               ← sync-layout.py copies shared markup into the static pages
 /assets/css/             ← theme.css (template), helper.css, site.css (shared refinements)
@@ -82,14 +83,14 @@ All template classes use the `tt-*` prefix. Key patterns to reuse:
 
 ## Shared Component System
 
-Header/footer sources are `_includes/site-header.html` and `_includes/site-footer.html`. They are copied into explicit marker blocks in the five marketing pages. No runtime fetch or JavaScript dependency is required to render them. After editing a shared source, run:
+Header/footer sources are `_includes/site-header.html` and `_includes/site-footer.html`. They are copied into explicit marker blocks in every page listed in `_scripts/sync-layout.py`. No runtime fetch or JavaScript dependency is required to render them. After editing a shared source, run:
 
 ```sh
 python _scripts/sync-layout.py
 python _scripts/sync-layout.py --check
 ```
 
-Do not separately edit generated copies. Use root-relative URLs for links and assets. `assets/css/site.css` loads after page styles; `assets/js/site.js` progressively enhances navigation and carousel accessibility.
+Do not separately edit generated copies. Use root-relative URLs for links and assets. When `site.css` or `site.js` changes, bump the `?v=YYYYMMDD` query on their links in every page so returning visitors don't get a stale cached copy. `assets/css/site.css` loads after page styles; `assets/js/site.js` progressively enhances navigation and carousel accessibility.
 
 Small-screen navigation remains visible without JavaScript. Enhanced menus have explicit expanded state and Escape dismissal. Carousels do not autoplay and have no play/pause control; visitors advance slides with the arrows and dots. Preserve reduced-motion support, inactive-slide handling, and visible keyboard focus.
 

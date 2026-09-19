@@ -4,7 +4,14 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = ["index.html", "services.html", "about-us.html", "contact.html", "services/ai-automation.html", "services/enterprise-architecture.html"]
+PAGES = [
+    "index.html", "services.html", "about-us.html", "contact.html", "careers.html",
+    "services/ai-automation.html", "services/enterprise-architecture.html",
+    "services/automation.html", "services/cloud.html", "services/data-ai.html",
+    "services/product-engineering.html", "services/professional-services.html", "services/advisory-consulting.html",
+    "industries/index.html",
+    "innovations/newsroom247.html", "innovations/cluexp.html", "innovations/sesat.html",
+]
 parser = argparse.ArgumentParser()
 parser.add_argument("--check", action="store_true", help="Fail if shared markup needs syncing")
 args = parser.parse_args()
@@ -12,6 +19,9 @@ stale = []
 for filename in PAGES:
     path = ROOT / filename
     original = path.read_text(encoding="utf-8")
+    # The shared header's menu icons come from Font Awesome.
+    if "fontawesome-all.min.css" not in original:
+        raise SystemExit(f"{filename} must load /assets/vendor/fontawesome/css/fontawesome-all.min.css")
     updated = original
     for part in ("header", "footer"):
         fragment = (ROOT / "_includes" / f"site-{part}.html").read_text(encoding="utf-8").strip()
