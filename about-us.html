@@ -38,11 +38,18 @@
 		.lc-hero:before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.72); }
 		.lc-hero .container { position: relative; z-index: 1; }
 	</style>
-	<link rel="stylesheet" href="/assets/css/site.css?v=20260919e">
+	<link rel="stylesheet" href="/assets/css/site.css?v=20260919g">
 </head>
 
 <body>
 	<!-- shared:header:start -->
+<noscript><style>
+  /* Without JavaScript the menus are plain lists: keep the header in the page flow so it pushes content down. */
+  .lc-site-header { position: relative; flex-wrap: wrap; background: var(--lc-dark); }
+  .lc-primary-nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items: start; width: 100%; }
+  .lc-nav-trigger { cursor: default; }
+  .lc-nav-trigger i { display: none; }
+</style></noscript>
 <a class="lc-skip-link" href="#main-content">Skip to content</a>
 <header class="lc-site-header">
   <a class="lc-site-logo" href="/" aria-label="logicacode home"><img src="/assets/img/logo-light.png" alt="logicacode" width="954" height="166"></a>
@@ -50,7 +57,7 @@
   <nav id="lc-primary-nav" class="lc-primary-nav" aria-label="Primary navigation">
     <a href="/">Home</a>
     <div class="lc-nav-item">
-      <button class="lc-nav-trigger" type="button" aria-expanded="false" aria-controls="lc-menu-services">Services <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+      <button class="lc-nav-trigger" type="button" aria-expanded="true" aria-controls="lc-menu-services">Services <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
       <div id="lc-menu-services" class="lc-mega">
         <div class="lc-mega-intro">
           <p class="lc-mega-title">Services</p>
@@ -101,7 +108,7 @@
       </div>
     </div>
     <div class="lc-nav-item">
-      <button class="lc-nav-trigger" type="button" aria-expanded="false" aria-controls="lc-menu-industries">Industries <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+      <button class="lc-nav-trigger" type="button" aria-expanded="true" aria-controls="lc-menu-industries">Industries <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
       <div id="lc-menu-industries" class="lc-mega">
         <div class="lc-mega-intro">
           <p class="lc-mega-title">Industries</p>
@@ -123,11 +130,11 @@
       </div>
     </div>
     <div class="lc-nav-item">
-      <button class="lc-nav-trigger" type="button" aria-expanded="false" aria-controls="lc-menu-innovations">Innovations <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+      <button class="lc-nav-trigger" type="button" aria-expanded="true" aria-controls="lc-menu-innovations">Innovations <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
       <div id="lc-menu-innovations" class="lc-mega">
         <div class="lc-mega-intro">
           <p class="lc-mega-title">Innovations</p>
-          <p>Products we build and run for newsrooms, service networks and libraries.</p>
+          <p>Products we built for newsrooms, service networks and libraries.</p>
           <a class="lc-mega-cta" href="/contact.html">Request a demo <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
         </div>
         <div class="lc-mega-grid">
@@ -138,7 +145,7 @@
       </div>
     </div>
     <div class="lc-nav-item">
-      <button class="lc-nav-trigger" type="button" aria-expanded="false" aria-controls="lc-menu-company">Company <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+      <button class="lc-nav-trigger" type="button" aria-expanded="true" aria-controls="lc-menu-company">Company <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
       <div id="lc-menu-company" class="lc-mega">
         <div class="lc-mega-intro">
           <p class="lc-mega-title">Company</p>
@@ -241,7 +248,7 @@
   </div>
 </footer>
 <!-- shared:footer:end -->
-	<script src="/assets/js/site.js?v=20260919e"></script>
+	<script src="/assets/js/site.js?v=20260919g"></script>
 </body>
 
 </html>

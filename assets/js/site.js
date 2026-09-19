@@ -71,6 +71,53 @@
     });
   }
 
+  // In-page scroll links (theme.js animates the scroll) also move keyboard focus to their target,
+  // so the next Tab continues from the section the visitor jumped to.
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest('a.page-scroll[href^="#"]');
+    var target = link && link.hash.length > 1 && document.getElementById(link.hash.slice(1));
+    if (!target) return;
+    if (!target.matches('a, button, input, select, textarea, [tabindex]')) target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+  });
+
+  // Homepage sections fade in as they enter the viewport (skipped when reduced motion is preferred).
+  var reveals = document.querySelectorAll('.lc-reveal');
+  if (reveals.length && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('lc-js');
+    var revealer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('lc-in'); revealer.unobserve(entry.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    reveals.forEach(function (el) { revealer.observe(el); });
+  }
+
+  // "Request a free AI call" links preselect the form topic. A call request needs only name and email.
+  var topic = document.getElementById('contact-topic');
+  var callNote = document.getElementById('lc-form-note');
+  if (topic && callNote) {
+    var subject = document.getElementById('contact-subject');
+    var message = document.getElementById('contact-message');
+    var messageLabel = document.querySelector('label[for="contact-message"]');
+    var CALL = 'AI Opportunity Call';
+    var CALL_SUBJECT = 'Free AI opportunity call';
+    var defaults = { placeholder: message.placeholder, label: messageLabel.textContent, note: callNote.innerHTML };
+    var syncTopic = function () {
+      var call = topic.value === CALL;
+      if (call && !subject.value) subject.value = CALL_SUBJECT;
+      if (!call && subject.value === CALL_SUBJECT) subject.value = '';
+      message.required = !call;
+      message.placeholder = call ? 'Which workflow would you like to look at? (optional)' : defaults.placeholder;
+      messageLabel.textContent = call ? 'Your Message (optional)' : defaults.label;
+      callNote.innerHTML = call ? '<em>Only your name and email are needed. We reply within two business days to arrange a time for the call.</em>' : defaults.note;
+    };
+    topic.addEventListener('change', syncTopic);
+    document.querySelectorAll('[data-topic]').forEach(function (link) {
+      link.addEventListener('click', function () { topic.value = link.getAttribute('data-topic'); syncTopic(); });
+    });
+  }
+
   var $ = window.jQuery;
   if (!$ || !$.fn.owlCarousel) return;
   var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
