@@ -8,6 +8,7 @@ exclude:
   - WEBSITE_ROADMAP.md
   - CONTENT_DIGITAL_MARKETING_ASSESSMENT.md
   - CONTENT_SERVICES_MENU.md
+  - CONTENT_MARKETING_CALENDAR.md
   - inner-page-template.html
   - template.html
   - _scripts/
