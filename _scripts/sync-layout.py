@@ -11,6 +11,7 @@ PAGES = [
     "services/product-engineering.html", "services/professional-services.html", "services/advisory-consulting.html",
     "industries/index.html",
     "innovations/newsroom247.html", "innovations/cluexp.html", "innovations/sesat.html",
+    "privacy-policy.html", "terms.html",
 ]
 parser = argparse.ArgumentParser()
 parser.add_argument("--check", action="store_true", help="Fail if shared markup needs syncing")

@@ -115,7 +115,7 @@ JPEG originals are retained alongside smaller WebP copies used by current pages.
 <meta name="description" content="150–160 char description">
 <meta property="og:title"       content="Page Title — logicacode">
 <meta property="og:description" content="150–160 char description">
-<meta property="og:image"       content="https://logicacode.com/assets/img/logo.png">
+<meta property="og:image"       content="https://logicacode.com/assets/img/og-share.png">
 <meta property="og:url"         content="https://logicacode.com/PAGE-PATH/">
 <link rel="canonical"           href="https://logicacode.com/PAGE-PATH/">
 ```

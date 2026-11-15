@@ -371,3 +371,16 @@ body:not(.is-mobile) .owl-carousel.nav-hover:focus-within .owl-nav { opacity: 1;
   .lc-industry-names { grid-template-columns: 1fr 1fr; gap: 14px 24px; }
 }
   
+
+/* Legal pages (privacy policy, terms of use): long-form text. */
+.lc-legal { max-width: 820px; margin: 0 auto; }
+.lc-legal h2 { margin: 48px 0 14px; font-size: 26px; }
+.lc-legal h3 { margin: 28px 0 10px; font-size: 19px; }
+.lc-legal p, .lc-legal li { color: var(--lc-text); line-height: 1.75; font-family: 'Open Sans', sans-serif; font-size: 16px; }
+.lc-legal ul { padding-left: 22px; margin-bottom: 18px; }
+.lc-legal li { margin-bottom: 6px; }
+.lc-legal a { color: var(--lc-red); text-decoration: underline; }
+.lc-legal .lc-legal-meta { color: var(--lc-dark); font-weight: 600; }
+.lc-legal table { font-size: 15px; }
+.lc-legal th { color: var(--lc-dark); }
+.lc-legal td { color: var(--lc-text); }
